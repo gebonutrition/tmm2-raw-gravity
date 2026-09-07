@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Arial:wght@400;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body{margin:0;background:#1A1A1A}
+  a{color:#F7941D}
+  a:hover{color:#FF5A1F}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes glowpulse{0%,100%{opacity:.55}50%{opacity:1}}
+  @keyframes barpulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.25)}}
+  input::placeholder{color:rgba(255,255,255,.5)}
+</style>
+</helmet>
+
+<div style="font-family:Arial,Helvetica,sans-serif;background:#1A1A1A;color:#fff;overflow-x:hidden;width:100%">
+
+  <!-- MARQUEE TOP BAR -->
+  <div data-screen-label="Marquee" style="background:#F7941D;overflow:hidden;white-space:nowrap;border-bottom:3px solid #000;padding:9px 0">
+    <div style="display:inline-block;animation:marquee 18s linear infinite;font-family:Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:.5px;color:#1A1A1A">
+      <sc-for list="{{ marqueeItems }}" as="mi" hint-placeholder-count="8">
+        <span style="margin:0 24px">{{ mi }}</span>
+      </sc-for>
+      <sc-for list="{{ marqueeItems }}" as="mi2" hint-placeholder-count="8">
+        <span style="margin:0 24px">{{ mi2 }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- BLOCK 1: HERO -->
+  <div data-screen-label="01 Hero" style="position:relative;padding:64px 6vw 72px;min-height:640px;background:radial-gradient(circle at 72% 40%,#FFDA8E 0%,#FDB94A 32%,#F7941D 65%,#E67A0F 100%);border-bottom:4px solid #1A1A1A;overflow:hidden">
+    <div style="position:absolute;inset:0;background-image:url(./assets/hero-bg-final.png);background-size:auto 115%;background-position:top right;background-repeat:no-repeat"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,#FDB94A 0%,#FDB94A 32%,rgba(253,185,74,0.75) 45%,transparent 62%)"></div>
+    <div style="position:relative;max-width:480px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;gap:10px;align-items:center">
+        <span style="background:#72CC1D;color:#1A1A1A;font-weight:700;font-size:12px;padding:5px 12px;border-radius:4px;border:2px solid #000;letter-spacing:.5px">EXCLUSIVE EDITION</span>
+        <a href="https://amazon.com" target="_blank" style="text-decoration:none;display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;box-shadow:0 3px 0 rgba(0,0,0,.35)">
+          
+          
+        </a>
+      </div>
+      <h1 style="font-family: 'Anton',Arial,sans-serif; font-size: clamp(40px,6vw,68px); line-height: 1.02; margin: 0; text-transform: uppercase; color: #fff; text-shadow: -3px -3px 0 #000,3px -3px 0 #000,-3px 3px 0 #000,3px 3px 0 #000,0 8px 0 rgba(0,0,0,.4); width: 500px; height: 298px">Take My Muffin<br><span style="color: rgb(247, 148, 29); font-family: Arial, sans-serif; text-shadow: rgb(0, 0, 0) -3px -3px 0px, rgb(0, 0, 0) 3px -3px 0px, rgb(0, 0, 0) -3px 3px 0px, rgb(0, 0, 0) 3px 3px 0px;">x</span> Raw Gravity<br>presents <br>raw coffee+</h1>
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:480px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:20px;color:#1A1A1A;font-weight:700"><span style="width:26px;height:26px;border:2px solid #1A1A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:rgba(255,255,255,.35)">⭐</span>Limited edition packaging</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:20px;color:#1A1A1A;font-weight:700"><span style="width:26px;height:26px;border:2px solid #1A1A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:rgba(255,255,255,.35)">❤️</span>Built for the fans who never log off</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:20px;color:#1A1A1A;font-weight:700"><span style="width:26px;height:26px;border:2px solid #1A1A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:rgba(255,255,255,.35)">⚡️</span>Get it before the restock</div>
+      </div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;font-family:Arial,sans-serif;font-weight:700;font-size:13px">
+        
+        
+        
+      </div>
+
+      <div style="background: #2E2E2E; border: 3px solid #F7941D; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; max-width: 420px; box-shadow: 5px 5px 0 #000; width: 363px; height: 43px">
+        <div style="font-size:12px;letter-spacing:1px;color:#F7941D;font-weight:700">FAN PRICE</div>
+        <div style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:24px;color:#888;text-decoration:line-through">$43.20</div>
+        <div style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:30px;color:#fff">$32.40</div>
+        <div style="background:#F7941D;color:#1A1A1A;font-family:Arial,sans-serif;font-weight:800;font-size:13px;padding:5px 10px;border-radius:6px">-25%</div>
+      </div>
+
+      <div style="max-width:420px">
+        <div style="font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:6px">First 500 orders get the fan price</div>
+        <div style="position:relative;background:#1A1A1A;border:3px solid #000;border-radius:20px;height:22px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.5)">
+          <div style="width:49.4%;height:100%;background:linear-gradient(90deg,#FFE066,#FF5A1F);box-shadow:0 0 14px 2px rgba(255,90,31,.9);animation:barpulse 1.6s ease-in-out infinite"></div>
+          <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-weight:800;font-size:11px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)">247 / 500</span>
+        </div>
+      </div>
+
+      <a href="https://amazon.com" target="_blank" style="text-decoration:none;align-self:flex-start;margin-top:6px;display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;box-shadow:0 6px 0 rgba(0,0,0,.35)">
+        <span style="background:#1A1A1A;color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:16px;padding:16px 24px;display:flex;align-items:center">amazon</span><span style="background:linear-gradient(90deg,#F7941D,#C1560E);color:#fff;font-family:Arial,sans-serif;font-weight:800;font-size:17px;padding:16px 28px;display:flex;align-items:center"><span style="font-size: 18px;">Get the Raw Coffee+&nbsp;</span></span>
+        
+      </a>
+    </div>
+  </div>
+
+  <!-- BLOCK 2: COMPARISON / RESULT -->
+  <div data-screen-label="02 Comparison" style="padding:72px 6vw;background:radial-gradient(circle at 50% 0%,rgba(247,148,29,.12),transparent 60%),#1A1A1A;border-bottom:4px solid #F7941D">
+    <h2 style="font-family:'Anton',Arial,sans-serif;font-size:clamp(32px,4.5vw,52px);text-transform:uppercase;text-align:center;margin:0 0 8px;color:#fff;text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000">This hits <span style="color:#FF5A1F">BETTER</span> than an energy drink, bro</h2>
+    
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;justify-content:center;max-width:640px;margin:0 auto 48px">
+      <div style="flex:1 1 220px;max-width:250px;background:#242424;border:2px solid #F7941D;border-radius:14px;padding:24px 20px;text-align:center;display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:28px">🎯</span>
+        <div style="font-family:Arial,sans-serif;font-weight:800;font-size:16px;color:#fff">Locked in for hours</div>
+        <div style="font-size:13px;color:#fff;opacity:.7">No mid-session crash mid-raid <br>or mid-deadline</div>
+      </div>
+      <div style="background:#242424;border:2px solid #F7941D;border-radius:14px;padding:24px 20px;text-align:center;display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:28px">🧠</span>
+        <div style="font-family:Arial,sans-serif;font-weight:800;font-size:16px;color:#fff">Clear-headed</div>
+        <div style="font-size:13px;color:#fff;opacity:.7">Sharp focus without the wired, jittery buzz</div>
+      </div>
+      <div style="background:#242424;border:2px solid #F7941D;border-radius:14px;padding:24px 20px;text-align:center;display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:28px">😌</span>
+        <div style="font-family:Arial,sans-serif;font-weight:800;font-size:16px;color:#fff">Calm, not wired</div>
+        <div style="font-size:13px;color:#fff;opacity:.7">Steady energy, zero shaky hands</div>
+      </div>
+      <div style="background:#242424;border:2px solid #F7941D;border-radius:14px;padding:24px 20px;text-align:center;display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:28px">🌙</span>
+        <div style="font-family:Arial,sans-serif;font-weight:800;font-size:16px;color:#fff">Sleep unaffected</div>
+        <div style="font-size:13px;color:#fff;opacity:.7">Low caffeine means no 2am crash-and-burn</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;max-width:1100px;margin:0 auto">
+      <div style="flex:1 1 380px;background:#242424;border:2px solid #555;border-radius:16px;padding:36px 32px;display:flex;align-items:center;gap:28px">
+        <img src="./assets/energy-can.png" alt="Energy drink can" style="width:130px;height:220px;object-fit:cover;flex-shrink:0;border-radius:8px">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;gap:10px;font-family:Arial,sans-serif;font-weight:800;font-size:20px;color:#fff">⚡ Energy drink</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;color:#fff">
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#E24444;font-weight:900">✕</span>160mg caffeine</div>
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#E24444;font-weight:900">✕</span>Sugar crash at 2am</div>
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#E24444;font-weight:900">✕</span>Hands shake mid-raid</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1 1 380px;background:#242424;border:2px solid #F7941D;border-radius:16px;padding:36px 32px;display:flex;align-items:center;gap:28px">
+        <img src="./assets/coffee-bag-v2.png" alt="Raw coffee+ Exclusive Edition bag" style="width:150px;height:220px;object-fit:cover;object-position:top;flex-shrink:0;border-radius:8px">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;gap:10px;font-family:Arial,sans-serif;font-weight:800;font-size:20px;color:#F7941D">🚀 Raw coffee+</div>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;color:#fff">
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#F7941D;font-weight:900">✓</span>~23mg caffeine</div>
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#F7941D;font-weight:900">✓</span>3,000mg Creatine for your brain</div>
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="color: rgb(247, 148, 29); font-weight: 900;">✓</span>Steady focus for hours, <br>no crash</div>
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#F7941D;font-weight:900">✓</span>Lion's Mane 1,000mg — focus, not the fake kind</div>
+            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#F7941D;font-weight:900">✓</span>L-Theanine + L-Tyrosine — calm focus, no jitters</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <!-- BLOCK 3: MID BAR -->
+  <div data-screen-label="03 Mid CTA bar" style="padding:36px 6vw;background:linear-gradient(90deg,#F7941D,#FF5A1F);border-bottom:4px solid #000">
+    <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:24px;justify-content:space-between;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:18px;flex:1 1 320px;min-width:260px">
+        
+        <div style="flex:1">
+          <div style="font-family:'Anton',Arial,sans-serif;font-size:20px;color:#1A1A1A;text-transform:uppercase">YOUR FAN PRICE IS STILL AVAILABLE</div>
+          <div style="font-size:13px;color:#1A1A1A;font-weight:700;margin-bottom:8px"><p class="p1" style="margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-size-adjust: none; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-variant-emoji: normal; font-weight: 400; font-stretch: normal; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);"><b>25% off for the first 500 orders only</b></p></div>
+          <div style="max-width:320px">
+            
+            <div style="position:relative;background:#1A1A1A;border:2px solid #000;border-radius:20px;height:26px;overflow:hidden">
+              <div style="position:absolute;inset:0;width:49.4%;background:linear-gradient(90deg,#FFE066,#FF5A1F)"></div>
+              <span style="position:absolute;left:49.4%;top:0;bottom:0;transform:translateX(-100%);display:flex;align-items:center;padding-right:8px;font-family:Arial,sans-serif;font-weight:800;font-size:13px;color:#fff">247</span>
+              <span style="position:absolute;left:49.4%;top:0;bottom:0;display:flex;align-items:center;padding-left:6px;font-family:Arial,sans-serif;font-weight:700;font-size:13px;color:#fff;opacity:.6">/ 500</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;background:#1A1A1A;border:3px solid #000;border-radius:10px;padding:10px 18px">
+        <span style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:22px;color:#888;text-decoration:line-through">$43.20</span>
+        <span style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:26px;color:#fff">$32.40</span>
+      </div>
+      
+      <a href="https://amazon.com" target="_blank" style="text-decoration:none;display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;box-shadow:0 6px 0 rgba(0,0,0,.35)">
+        <span style="background:#1A1A1A;color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:15px;padding:13px 20px;display:flex;align-items:center">amazon</span>
+        <span style="background:linear-gradient(90deg,#F7941D,#C1560E);color:#fff;font-family:Arial,sans-serif;font-weight:800;font-size:15px;padding:13px 24px;display:flex;align-items:center"><span style="font-size: 18px;">Get the Raw Coffee+&nbsp;</span></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- BLOCK 4: PHOTO GRID -->
+  <div data-screen-label="04 Photo grid" style="padding:72px 6vw;background:#1A1A1A;border-bottom:4px solid #F7941D">
+    <h2 style="font-family:'Anton',Arial,sans-serif;font-size:clamp(28px,4vw,44px);text-transform:uppercase;text-align:center;margin:0 0 40px;color:#fff">Straight from the fan squad</h2>
+    <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:22px">
+      <sc-for list="{{ photoSlots }}" as="ps" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="aspect-ratio:1/1;border-radius:12px;border:4px solid #fff;box-shadow:0 0 0 3px #000;overflow:hidden;background:#2E2E2E">
+            <image-slot id="{{ ps.id }}" shape="rect" placeholder="{{ ps.placeholder }}"></image-slot>
+          </div>
+          <div style="text-align:center;font-size:12px;color:#fff;opacity:.6;font-weight:700">{{ ps.caption }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- BLOCK 5: TESTIMONIALS -->
+  <div data-screen-label="05 Testimonials" style="padding:72px 6vw;background:#1A1A1A;border-bottom:4px solid #F7941D">
+    <h2 style="font-family:'Anton',Arial,sans-serif;font-size:clamp(28px,4vw,44px);text-transform:uppercase;text-align:center;margin:0 0 40px;color:#fff">Verified by the squad</h2>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;max-width:1080px;margin:0 auto">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+        <div style="flex:1 1 300px;max-width:340px;background:#2E2E2E;border:3px solid #000;border-radius:14px;padding:24px;position:relative;box-shadow:5px 5px 0 rgba(247,148,29,.5)">
+          <div style="font-size:28px;color:#F7941D;line-height:1;margin-bottom:8px">"</div>
+          <div style="font-size:15px;line-height:1.5;color:#fff;margin-bottom:16px">{{ t.quote }}</div>
+          <div style="font-size:13px;font-weight:700;color:#F7941D">{{ t.author }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- BLOCK 6: EMAIL CAPTURE -->
+  <div data-screen-label="06 Email capture" style="padding:72px 6vw;background:radial-gradient(ellipse 70% 60% at 25% 30%,rgba(247,148,29,.18),transparent 70%),#1A1A1A;border-bottom:4px solid #F7941D">
+    <div style="max-width:640px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px">
+      <div style="font-size:44px">📬</div>
+      <h2 style="font-family:'Anton',Arial,sans-serif;font-size:clamp(26px,4vw,40px);text-transform:uppercase;margin:0;color:#fff"><span style="font-size: clamp(32px, 5vw, 56px);">Your fan price is waiting<br></span>get the raw coffee with -25% off</h2>
+
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:22px;color:#888;text-decoration:line-through">$43.20</span>
+        <span style="font-family: Arial Black,Arial,sans-serif; font-weight: 900; font-size: 28px; color: #F7941D">$32.40</span>
+        
+      </div>
+      <div style="max-width:320px;width:100%">
+        <div style="position:relative;background:#2E2E2E;border:2px solid #000;border-radius:20px;height:26px;overflow:hidden">
+          <div style="position:absolute;inset:0;width:49.4%;background:linear-gradient(90deg,#F7941D,#FF5A1F)"></div>
+          <span style="position:absolute;left:49.4%;top:0;bottom:0;transform:translateX(-100%);display:flex;align-items:center;padding-right:8px;font-family:Arial,sans-serif;font-weight:800;font-size:13px;color:#fff">247</span>
+          <span style="position:absolute;left:49.4%;top:0;bottom:0;display:flex;align-items:center;padding-left:6px;font-family:Arial,sans-serif;font-weight:700;font-size:13px;color:#fff;opacity:.6">/ 500</span>
+        </div>
+      </div>
+      
+      <sc-if value="{{ emailSubmitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#2E2E2E;border:3px solid #72CC1D;border-radius:10px;padding:16px 22px;font-weight:700;color:#72CC1D">Code sent! Check your inbox 🎉</div>
+      </sc-if>
+      <sc-if value="{{ !emailSubmitted }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submitEmail }}" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%;max-width:460px">
+          <input type="email" required="{{ true }}" value="{{ email }}" onChange="{{ setEmail }}" placeholder="you@example.com" style="flex:1 1 240px;padding:14px 16px;border-radius:8px;border:3px solid #000;background:#2E2E2E;color:#fff;font-size:15px">
+          <button type="submit" style="background:#F7941D;color:#1A1A1A;font-family:Arial,sans-serif;font-weight:700;font-size:15px;padding:14px 22px;border-radius:8px;border:3px solid #000;box-shadow:4px 4px 0 #000;cursor:pointer" style-hover="background:#FF5A1F;color:#fff">Try Raw Coffee+</button>
+        </form>
+      </sc-if>
+      <div style="font-size:12px;color:#fff;opacity:.5">By submitting you agree to receive emails from Raw Gravity. Unsubscribe anytime.</div>
+    </div>
+  </div>
+
+  <!-- BLOCK 7: FINAL CTA + FOOTER -->
+  <div data-screen-label="07 Final CTA" style="padding:56px 6vw 40px;background:#1A1A1A;text-align:left">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;max-width:1200px;margin:0 auto">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-family:'Anton',Arial,sans-serif;font-size:24px;letter-spacing:1px;color:#fff;text-transform:uppercase">TMM x Raw Gravity</div>
+        <div style="font-size:14px;color:#fff;opacity:.7">hello@rawgravity.com</div>
+        <div style="font-size:14px;color:#fff;opacity:.7">Austin, TX</div>
+        <a href="#" style="font-size:13px;text-decoration:underline;margin-top:4px">Privacy Policy</a>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+        <a href="https://amazon.com" target="_blank" style="text-decoration:none;display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;box-shadow:0 6px 0 rgba(0,0,0,.35)">
+          <span style="background:#2E2E2E;color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:17px;padding:18px 26px;display:flex;align-items:center">amazon</span>
+          <span style="background:linear-gradient(90deg,#F7941D,#C1560E);color:#fff;font-family:Arial,sans-serif;font-weight:800;font-size:18px;padding:18px 30px;display:flex;align-items:center">Get the Raw Coffee+&nbsp;</span>
+        </a>
+        
+      </div>
+    </div>
+
+    <div style="max-width:1200px;margin:40px auto 0;border-top:1px solid #333"></div>
+
+    <div style="max-width:1200px;margin:28px auto 0;display:flex;gap:14px;flex-wrap:wrap">
+      <sc-for list="{{ trustBadges }}" as="tb" hint-placeholder-count="6">
+        <span style="border:1px solid #444;border-radius:999px;padding:10px 20px;font-size:14px;color:#fff;background:#242424">{{ tb }}</span>
+      </sc-for>
+    </div>
+
+    <div style="max-width:1200px;margin:28px auto 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:#fff;opacity:.45">
+      <div>© 2026 Raw Gravity x TAKE my MUFFIN. All rights reserved.</div>
+      <div>Dietary supplement — statements not evaluated by the FDA.</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    copiedBlock: null,
+    email: '',
+    emailSubmitted: false
+  };
+
+  copyCode = (block) => {
+    this.setState({ copiedBlock: block });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ copiedBlock: null }), 1600);
+    try {
+      if (navigator.clipboard) navigator.clipboard.writeText('TMM2026').catch(() => {});
+    } catch (e) {}
+  };
+
+  setEmail = (e) => this.setState({ email: e.target.value });
+
+  submitEmail = (e) => {
+    e.preventDefault();
+    if (!this.state.email.includes('@')) return;
+    this.setState({ emailSubmitted: true });
+  };
+
+  renderVals() {
+    const label = (block, def) => this.state.copiedBlock === block ? 'Copied!' : def;
+    return {
+      marqueeItems: [
+        'LIMITED COLLAB EDITION', 'FAN PRICE FOR THE FIRST 500 ORDERS ONLY',
+        'LIMITED COLLAB EDITION', 'FAN PRICE FOR THE FIRST 500 ORDERS ONLY'
+      ],
+      copyCode: this.copyCode,
+      heroCopyLabel: label('hero', 'Tap to copy'),
+      midCopyLabel: label('mid', 'Copy'),
+      finalCopyLabel: label('final', 'Tap to copy'),
+      ingredients: [
+        { name: "Lion's Mane 1,000mg", note: 'focus, not the fake kind' },
+        { name: 'Creatine Monohydrate 3,000mg', note: 'only coffee with this dose' },
+        { name: 'L-Theanine + L-Tyrosine', note: 'calm focus, no jitters' },
+        { name: '~23mg caffeine (decaf arabica)', note: "won't wreck your sleep" }
+      ],
+      photoSlots: [
+        { id: 'photo-1', placeholder: 'Fan photo', caption: 'Add fan photo' },
+        { id: 'photo-2', placeholder: 'Fan photo', caption: 'Add fan photo' },
+        { id: 'photo-3', placeholder: 'Fan photo', caption: 'Add fan photo' },
+        { id: 'photo-4', placeholder: 'Fan photo', caption: 'Add fan photo' }
+      ],
+      testimonials: [
+        { quote: 'Three raid nights in a row till 5am and I was still sharp. Didn\u2019t expect that from a coffee packet.', author: 'Dan M., dev, TMM fan' },
+        { quote: 'Creatine in coffee sounds insane until you read the studies. Then it sounds obvious.', author: 'r/nootropics, verified purchase' },
+        { quote: 'The collab packaging alone is worth it. That it also works is a bonus.', author: 'Alex T., 24' },
+        { quote: 'No jitters, no crash, just steady focus through a full workday of back-to-back meetings.', author: 'Marta K., 29' },
+        { quote: 'A month ago, I gave up energy drinks in favor of Raw Coffee+. My sleep has genuinely improved.\nIvan P., streamer', author: 'Ivan P., streamer' },
+        { quote: 'Tastes like real coffee, not a chalky supplement. Didn\u2019t expect that.', author: 'Sasha V., verified purchase' }
+      ],
+      email: this.state.email,
+      setEmail: this.setEmail,
+      submitEmail: this.submitEmail,
+      emailSubmitted: this.state.emailSubmitted,
+      trustBadges: ['100% Secure Checkout', 'Made in USA', 'Non-GMO', 'Vegan Friendly', 'No Proprietary Blends', 'Amazon Buyer Protection']
+    };
+  }
+}
+</script>
+</body>
+</html>
