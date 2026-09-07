@@ -1,335 +1,707 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Take My Muffin × Raw Gravity — Raw Coffee+</title>
+  <meta name="description" content="Take My Muffin x Raw Gravity presents Raw Coffee+ — limited collab edition, fan price $32.40.">
+
+  <!-- Google Analytics: replace the placeholder with the TMM2 Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <script src="./pixel.js"></script>
+  <script src="./fbpixel.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#1A1A1A;
+      --panel:#242424;
+      --panel-2:#2E2E2E;
+      --orange:#F7941D;
+      --orange-deep:#C1560E;
+      --orange-hot:#FF5A1F;
+      --lime:#72CC1D;
+      --white:#fff;
+      --muted:rgba(255,255,255,.68);
+      --max:1280px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif}
+    img{display:block;max-width:100%}
+    a{color:inherit}
+    button,input{font:inherit}
+
+    .wrap{width:min(var(--max),calc(100% - 64px));margin:0 auto}
+
+    .marquee{
+      background:var(--orange);
+      color:#1A1A1A;
+      overflow:hidden;
+      white-space:nowrap;
+      border-bottom:3px solid #000;
+      padding:9px 0;
+      font-weight:800;
+      font-size:14px;
+      letter-spacing:.45px
+    }
+    .marquee-track{
+      display:inline-block;
+      min-width:max-content;
+      animation:marquee 18s linear infinite
+    }
+    .marquee-track span{display:inline-block;margin:0 24px}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    .hero{
+      position:relative;
+      min-height:760px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 72% 40%,#FFDA8E 0%,#FDB94A 32%,#F7941D 65%,#E67A0F 100%);
+      border-bottom:4px solid #111
+    }
+    .hero-art{
+      position:absolute;inset:0;
+      background-image:url("./assets/hero-bg-final.png");
+      background-repeat:no-repeat;
+      background-position:top right;
+      background-size:auto 115%;
+    }
+    .hero-shade{
+      position:absolute;inset:0;
+      background:linear-gradient(90deg,#FDB94A 0%,#FDB94A 28%,rgba(253,185,74,.76) 43%,transparent 64%)
+    }
+    .hero-inner{
+      position:relative;
+      z-index:1;
+      padding:64px 0 78px;
+      min-height:760px;
+      display:flex;
+      align-items:flex-start
+    }
+    .hero-copy{width:min(540px,100%);padding-top:4px}
+    .badge{
+      display:inline-block;
+      background:var(--lime);
+      color:#1A1A1A;
+      border:2px solid #000;
+      border-radius:5px;
+      padding:5px 12px;
+      font-weight:800;
+      font-size:12px;
+      letter-spacing:.55px;
+      margin-bottom:18px
+    }
+    h1,h2{font-family:Anton,Arial,sans-serif;text-transform:uppercase}
+    .hero h1{
+      margin:0;
+      font-size:clamp(50px,6vw,84px);
+      line-height:1.02;
+      letter-spacing:.2px;
+      text-shadow:-3px -3px 0 #000,3px -3px 0 #000,-3px 3px 0 #000,3px 3px 0 #000,0 8px 0 rgba(0,0,0,.4)
+    }
+    .hero h1 .x{color:var(--orange)}
+    .hero-points{display:grid;gap:10px;margin:24px 0 22px}
+    .hero-point{display:flex;align-items:center;gap:10px;color:#1A1A1A;font-weight:800;font-size:18px}
+    .hero-point i{
+      width:28px;height:28px;border:2px solid #1A1A1A;border-radius:50%;
+      display:grid;place-items:center;font-style:normal;font-size:13px;flex:0 0 auto;
+      background:rgba(255,255,255,.32)
+    }
+    .price-card{
+      width:min(420px,100%);
+      display:flex;align-items:center;gap:14px;
+      background:var(--panel-2);border:3px solid var(--orange);border-radius:12px;
+      padding:16px 20px;box-shadow:5px 5px 0 #000
+    }
+    .price-label{font-size:12px;letter-spacing:1px;color:var(--orange);font-weight:800}
+    .old-price{font:900 24px Arial Black,Arial,sans-serif;color:#888;text-decoration:line-through}
+    .new-price{font:900 30px Arial Black,Arial,sans-serif}
+    .discount{background:var(--orange);color:#1A1A1A;padding:5px 10px;border-radius:6px;font-weight:900;font-size:13px;margin-left:auto}
+    .stock{width:min(420px,100%);margin-top:18px}
+    .stock-label{font-size:13px;font-weight:800;color:#1A1A1A;margin-bottom:6px}
+    .stock-bar{position:relative;height:22px;background:#1A1A1A;border:3px solid #000;border-radius:20px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.5)}
+    .stock-fill{height:100%;width:49.4%;background:linear-gradient(90deg,#FFE066,#FF5A1F);box-shadow:0 0 14px 2px rgba(255,90,31,.9);animation:barpulse 1.6s ease-in-out infinite}
+    .stock-bar span{position:absolute;inset:0;display:grid;place-items:center;font-size:11px;font-weight:900;text-shadow:0 1px 2px #000}
+    @keyframes barpulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.22)}}
+
+    .amazon-btn{
+      display:inline-flex;align-items:stretch;
+      text-decoration:none;border-radius:999px;overflow:hidden;
+      box-shadow:0 6px 0 rgba(0,0,0,.35)
+    }
+    .amazon-btn .amazon{background:#1A1A1A;padding:15px 22px;font-weight:800}
+    .amazon-btn .offer{background:linear-gradient(90deg,var(--orange),var(--orange-deep));padding:15px 28px;font-weight:900}
+    .hero-cta{margin-top:24px}
+
+    section{border-bottom:4px solid var(--orange)}
+    .section-dark{background:var(--bg)}
+    .section-panel{
+      padding:72px 0;
+      background:radial-gradient(circle at 50% 0%,rgba(247,148,29,.12),transparent 60%),var(--bg)
+    }
+    .section-title{
+      margin:0 0 34px;text-align:center;font-size:clamp(34px,4.4vw,54px);
+      text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000
+    }
+    .section-title .accent{color:var(--orange-hot)}
+
+    .benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:48px}
+    .benefit{
+      background:var(--panel);border:2px solid var(--orange);border-radius:14px;padding:24px 20px;
+      text-align:center;display:flex;flex-direction:column;gap:8px;min-height:152px
+    }
+    .benefit .emoji{font-size:28px}
+    .benefit strong{font-size:16px}
+    .benefit p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1120px;margin:0 auto}
+    .compare-card{
+      background:var(--panel);border:2px solid #555;border-radius:16px;
+      padding:36px 32px;display:flex;align-items:center;gap:28px
+    }
+    .compare-card.win{border-color:var(--orange)}
+    .compare-card img{width:150px;height:220px;object-fit:cover;border-radius:8px;flex:0 0 auto}
+    .compare-card.energy img{width:130px}
+    .compare-card h3{margin:0 0 16px;font-size:20px}
+    .compare-card.win h3{color:var(--orange)}
+    .checks{display:grid;gap:11px;font-size:15px}
+    .check{display:flex;gap:10px;line-height:1.35}
+    .xmark{color:#E24444;font-weight:900}.checkmark{color:var(--orange);font-weight:900}
+
+    .mid-cta{
+      background:linear-gradient(90deg,var(--orange),var(--orange-hot));
+      color:#1A1A1A;padding:34px 0;border-bottom:4px solid #000
+    }
+    .mid-inner{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:22px;align-items:center}
+    .mid-copy strong{display:block;font-family:Anton,Arial,sans-serif;font-size:26px;text-transform:uppercase;line-height:1.08}
+    .mid-copy p{margin:6px 0 10px;font-size:13px;font-weight:800}
+    .mid-price{display:flex;align-items:center;gap:10px;background:#1A1A1A;border:3px solid #000;border-radius:10px;padding:10px 18px;color:#fff}
+    .mid-price .old{color:#888;text-decoration:line-through;font:900 22px Arial Black,Arial,sans-serif}
+    .mid-price .new{font:900 26px Arial Black,Arial,sans-serif}
+    .mid-cta .amazon-btn .offer{color:#fff}
+
+    .photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:1000px;margin:0 auto}
+    .photo-card{display:flex;flex-direction:column;gap:8px}
+    .photo-frame{
+      aspect-ratio:3/4;border-radius:12px;border:4px solid #fff;box-shadow:0 0 0 3px #000;
+      overflow:hidden;background:#2E2E2E
+    }
+    .photo-frame img{width:100%;height:100%;object-fit:cover}
+    .photo-caption{text-align:center;font-size:12px;color:var(--muted);font-weight:800}
+
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1120px;margin:0 auto}
+    .testimonial{
+      background:var(--panel);border:3px solid #000;border-radius:14px;padding:24px;
+      box-shadow:5px 5px 0 rgba(247,148,29,.5)
+    }
+    .quote-mark{font-size:28px;color:var(--orange);line-height:1;margin-bottom:8px}
+    .testimonial p{margin:0 0 16px;line-height:1.52;font-size:15px}
+    .testimonial strong{color:var(--orange);font-size:13px}
+
+    .email-section{
+      padding:72px 0;
+      background:radial-gradient(ellipse 70% 60% at 25% 30%,rgba(247,148,29,.18),transparent 70%),var(--bg)
+    }
+    .email-box{max-width:720px;margin:0 auto;text-align:center}
+    .email-icon{font-size:44px}
+    .email-box h2{font-size:clamp(28px,4vw,48px);margin:12px 0}
+    .email-box .price-line{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:16px}
+    .price-line .old{font:900 22px Arial Black,Arial,sans-serif;color:#888;text-decoration:line-through}
+    .price-line .new{font:900 28px Arial Black,Arial,sans-serif;color:var(--orange)}
+    .email-form{display:flex;gap:10px;max-width:540px;margin:0 auto}
+    .email-form input{
+      flex:1;padding:14px 16px;border-radius:8px;border:3px solid #000;
+      background:var(--panel-2);color:#fff;font-size:15px;min-width:0
+    }
+    .email-form button{
+      border:3px solid #000;background:var(--orange);color:#1A1A1A;
+      padding:14px 22px;border-radius:8px;box-shadow:4px 4px 0 #000;
+      font-weight:900;cursor:pointer;white-space:nowrap
+    }
+    .email-form button:disabled{opacity:.65;cursor:wait}
+    .fine{margin-top:14px;font-size:12px;color:var(--muted)}
+    .success{
+      display:none;
+      background:var(--panel-2);border:3px solid var(--lime);border-radius:10px;
+      padding:16px 22px;font-weight:800;color:var(--lime);max-width:540px;margin:0 auto
+    }
+    .error{
+      display:none;
+      background:rgba(226,68,68,.12);border:2px solid #E24444;border-radius:10px;
+      padding:12px 16px;color:#fff;max-width:540px;margin:12px auto 0;font-size:13px
+    }
+
+    .footer{padding:56px 0 40px;background:var(--bg)}
+    .footer-grid{display:flex;justify-content:space-between;gap:30px;align-items:flex-start}
+    .footer-title{font-family:Anton,Arial,sans-serif;font-size:24px;letter-spacing:1px;text-transform:uppercase}
+    .footer-meta{margin-top:10px;color:var(--muted);font-size:14px}
+    .privacy{display:inline-block;margin-top:8px;font-size:13px;text-decoration:underline}
+    .trust{display:flex;flex-wrap:wrap;gap:10px;max-width:1200px;margin:40px auto 0}
+    .trust span{border:1px solid #444;border-radius:999px;padding:10px 20px;font-size:13px;background:var(--panel)}
+    .legal{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:rgba(255,255,255,.45);font-size:12px;border-top:1px solid #333;margin-top:28px;padding-top:28px}
+
+    @media (max-width: 1100px){
+      .wrap{width:min(var(--max),calc(100% - 44px))}
+      .hero{min-height:700px}
+      .hero-inner{min-height:700px}
+      .hero-art{background-size:auto 108%}
+      .benefit-grid{grid-template-columns:repeat(2,1fr)}
+      .compare-grid{grid-template-columns:1fr}
+      .compare-card{max-width:760px;margin:0 auto;width:100%}
+      .testimonials{grid-template-columns:repeat(2,1fr)}
+      .mid-inner{grid-template-columns:1fr auto auto}
+    }
+
+    @media (max-width: 768px){
+      .wrap{width:calc(100% - 32px)}
+
+      .marquee{padding:8px 0;font-size:12px}
+      .marquee-track{animation-duration:14s}
+      .marquee-track span{margin:0 18px}
+
+      .hero{
+        min-height:720px;
+        background:
+          radial-gradient(circle at 76% 7%,#FFDA8E 0%,#FDB94A 30%,#F7941D 62%,#E67A0F 100%);
+      }
+      .hero-art{
+        background-size:auto 78%;
+        background-position:72% bottom;
+      }
+      .hero-shade{
+        background:linear-gradient(180deg,rgba(253,185,74,.92) 0%,rgba(253,185,74,.72) 34%,rgba(253,185,74,.18) 58%,transparent 78%)
+      }
+      .hero-inner{min-height:720px;padding:28px 0 36px;align-items:flex-start}
+      .hero-copy{width:100%;padding:0}
+      .badge{font-size:11px;padding:4px 10px;margin-bottom:12px}
+      .hero h1{font-size:clamp(34px,9vw,48px);max-width:430px}
+      .hero-points{gap:9px;margin:16px 0 18px;max-width:290px}
+      .hero-point{font-size:12px;gap:8px}
+      .hero-point i{width:20px;height:20px;font-size:9px}
+      .price-card{width:190px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:5px 8px}
+      .price-label{font-size:10px}
+      .old-price{font-size:14px}
+      .new-price{font-size:18px}
+      .discount{font-size:10px;padding:3px 7px;grid-column:2;grid-row:1}
+      .price-card .old-price{grid-column:1;grid-row:2}
+      .price-card .new-price{grid-column:2;grid-row:2}
+      .stock{width:190px;margin-top:12px}
+      .stock-label{font-size:11px;margin-bottom:5px}
+      .stock-bar{height:20px}
+      .stock-bar span{font-size:10px}
+      .hero-cta{margin-top:15px}
+      .amazon-btn .amazon{padding:12px 13px;font-size:12px}
+      .amazon-btn .offer{padding:12px 13px;font-size:12px;white-space:nowrap}
+
+      .section-panel,.email-section{padding:44px 0}
+      .section-title{font-size:26px;margin-bottom:24px}
+
+      .benefit-grid{grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:28px}
+      .benefit{padding:18px 14px;min-height:120px;gap:6px}
+      .benefit .emoji{font-size:22px}
+      .benefit strong{font-size:13px}
+      .benefit p{font-size:11px}
+
+      .compare-grid{gap:20px}
+      .compare-card{padding:22px 20px;gap:18px;align-items:center}
+      .compare-card img{width:100px;height:150px}
+      .compare-card.energy img{width:90px}
+      .compare-card h3{font-size:16px;margin-bottom:10px}
+      .checks{gap:8px;font-size:13px}
+
+      .mid-cta{padding:28px 0}
+      .mid-inner{grid-template-columns:1fr;gap:16px}
+      .mid-copy strong{font-size:19px}
+      .mid-copy p{font-size:12px}
+      .mid-price{justify-self:start;padding:10px 16px}
+      .mid-price .old{font-size:18px}
+      .mid-price .new{font-size:22px}
+      .mid-cta .amazon-btn{justify-self:start}
+
+      .photo-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+      .photo-caption{font-size:11px}
+
+      .testimonials{grid-template-columns:1fr;gap:16px}
+      .testimonial{padding:20px}
+      .testimonial p{font-size:14px}
+
+      .email-box h2{font-size:28px;line-height:1.15}
+      .email-form{flex-direction:column}
+      .email-form button{width:100%}
+
+      .footer{padding:36px 0 28px}
+      .footer-grid{flex-direction:column}
+      .footer .amazon-btn{margin-top:20px}
+      .trust{margin-top:20px}
+      .legal{flex-direction:column}
+    }
+
+    @media (max-width: 390px){
+      .hero{min-height:690px}
+      .hero-inner{min-height:690px}
+      .hero h1{font-size:32px}
+      .hero-art{background-size:auto 75%;background-position:74% bottom}
+      .price-card,.stock{width:182px}
+    }
+  </style>
 </head>
+
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Arial:wght@400;700&amp;display=swap" rel="stylesheet">
-<script src="./image-slot.js"></script>
-<style>
-  body{margin:0;background:#1A1A1A}
-  a{color:#F7941D}
-  a:hover{color:#FF5A1F}
-  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  @keyframes glowpulse{0%,100%{opacity:.55}50%{opacity:1}}
-  @keyframes barpulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.25)}}
-  input::placeholder{color:rgba(255,255,255,.5)}
-</style>
-</helmet>
-
-<div style="font-family:Arial,Helvetica,sans-serif;background:#1A1A1A;color:#fff;overflow-x:hidden;width:100%">
-
-  <!-- MARQUEE TOP BAR -->
-  <div data-screen-label="Marquee" style="background:#F7941D;overflow:hidden;white-space:nowrap;border-bottom:3px solid #000;padding:9px 0">
-    <div style="display:inline-block;animation:marquee 18s linear infinite;font-family:Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:.5px;color:#1A1A1A">
-      <sc-for list="{{ marqueeItems }}" as="mi" hint-placeholder-count="8">
-        <span style="margin:0 24px">{{ mi }}</span>
-      </sc-for>
-      <sc-for list="{{ marqueeItems }}" as="mi2" hint-placeholder-count="8">
-        <span style="margin:0 24px">{{ mi2 }}</span>
-      </sc-for>
+  <header class="marquee">
+    <div class="marquee-track">
+      <span>LIMITED COLLAB EDITION</span>
+      <span>FAN PRICE FOR THE FIRST 500 ORDERS ONLY</span>
+      <span>LIMITED COLLAB EDITION</span>
+      <span>FAN PRICE FOR THE FIRST 500 ORDERS ONLY</span>
+      <span>LIMITED COLLAB EDITION</span>
+      <span>FAN PRICE FOR THE FIRST 500 ORDERS ONLY</span>
     </div>
-  </div>
+  </header>
 
-  <!-- BLOCK 1: HERO -->
-  <div data-screen-label="01 Hero" style="position:relative;padding:64px 6vw 72px;min-height:640px;background:radial-gradient(circle at 72% 40%,#FFDA8E 0%,#FDB94A 32%,#F7941D 65%,#E67A0F 100%);border-bottom:4px solid #1A1A1A;overflow:hidden">
-    <div style="position:absolute;inset:0;background-image:url(./assets/hero-bg-final.png);background-size:auto 115%;background-position:top right;background-repeat:no-repeat"></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(90deg,#FDB94A 0%,#FDB94A 32%,rgba(253,185,74,0.75) 45%,transparent 62%)"></div>
-    <div style="position:relative;max-width:480px;display:flex;flex-direction:column;gap:20px">
-      <div style="display:flex;gap:10px;align-items:center">
-        <span style="background:#72CC1D;color:#1A1A1A;font-weight:700;font-size:12px;padding:5px 12px;border-radius:4px;border:2px solid #000;letter-spacing:.5px">EXCLUSIVE EDITION</span>
-        <a href="https://amazon.com" target="_blank" style="text-decoration:none;display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;box-shadow:0 3px 0 rgba(0,0,0,.35)">
-          
-          
-        </a>
-      </div>
-      <h1 style="font-family: 'Anton',Arial,sans-serif; font-size: clamp(40px,6vw,68px); line-height: 1.02; margin: 0; text-transform: uppercase; color: #fff; text-shadow: -3px -3px 0 #000,3px -3px 0 #000,-3px 3px 0 #000,3px 3px 0 #000,0 8px 0 rgba(0,0,0,.4); width: 500px; height: 298px">Take My Muffin<br><span style="color: rgb(247, 148, 29); font-family: Arial, sans-serif; text-shadow: rgb(0, 0, 0) -3px -3px 0px, rgb(0, 0, 0) 3px -3px 0px, rgb(0, 0, 0) -3px 3px 0px, rgb(0, 0, 0) 3px 3px 0px;">x</span> Raw Gravity<br>presents <br>raw coffee+</h1>
-      <div style="display:flex;flex-direction:column;gap:8px;max-width:480px">
-        <div style="display:flex;align-items:center;gap:10px;font-size:20px;color:#1A1A1A;font-weight:700"><span style="width:26px;height:26px;border:2px solid #1A1A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:rgba(255,255,255,.35)">⭐</span>Limited edition packaging</div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:20px;color:#1A1A1A;font-weight:700"><span style="width:26px;height:26px;border:2px solid #1A1A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:rgba(255,255,255,.35)">❤️</span>Built for the fans who never log off</div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:20px;color:#1A1A1A;font-weight:700"><span style="width:26px;height:26px;border:2px solid #1A1A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:rgba(255,255,255,.35)">⚡️</span>Get it before the restock</div>
-      </div>
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-art" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
 
-      <div style="display:flex;gap:10px;flex-wrap:wrap;font-family:Arial,sans-serif;font-weight:700;font-size:13px">
-        
-        
-        
-      </div>
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <div class="badge">EXCLUSIVE EDITION</div>
 
-      <div style="background: #2E2E2E; border: 3px solid #F7941D; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; max-width: 420px; box-shadow: 5px 5px 0 #000; width: 363px; height: 43px">
-        <div style="font-size:12px;letter-spacing:1px;color:#F7941D;font-weight:700">FAN PRICE</div>
-        <div style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:24px;color:#888;text-decoration:line-through">$43.20</div>
-        <div style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:30px;color:#fff">$32.40</div>
-        <div style="background:#F7941D;color:#1A1A1A;font-family:Arial,sans-serif;font-weight:800;font-size:13px;padding:5px 10px;border-radius:6px">-25%</div>
-      </div>
+          <h1>
+            Take My Muffin
+            <span class="x">x</span> Raw Gravity<br>
+            presents raw coffee+
+          </h1>
 
-      <div style="max-width:420px">
-        <div style="font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:6px">First 500 orders get the fan price</div>
-        <div style="position:relative;background:#1A1A1A;border:3px solid #000;border-radius:20px;height:22px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.5)">
-          <div style="width:49.4%;height:100%;background:linear-gradient(90deg,#FFE066,#FF5A1F);box-shadow:0 0 14px 2px rgba(255,90,31,.9);animation:barpulse 1.6s ease-in-out infinite"></div>
-          <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-weight:800;font-size:11px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)">247 / 500</span>
-        </div>
-      </div>
-
-      <a href="https://amazon.com" target="_blank" style="text-decoration:none;align-self:flex-start;margin-top:6px;display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;box-shadow:0 6px 0 rgba(0,0,0,.35)">
-        <span style="background:#1A1A1A;color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:16px;padding:16px 24px;display:flex;align-items:center">amazon</span><span style="background:linear-gradient(90deg,#F7941D,#C1560E);color:#fff;font-family:Arial,sans-serif;font-weight:800;font-size:17px;padding:16px 28px;display:flex;align-items:center"><span style="font-size: 18px;">Get the Raw Coffee+&nbsp;</span></span>
-        
-      </a>
-    </div>
-  </div>
-
-  <!-- BLOCK 2: COMPARISON / RESULT -->
-  <div data-screen-label="02 Comparison" style="padding:72px 6vw;background:radial-gradient(circle at 50% 0%,rgba(247,148,29,.12),transparent 60%),#1A1A1A;border-bottom:4px solid #F7941D">
-    <h2 style="font-family:'Anton',Arial,sans-serif;font-size:clamp(32px,4.5vw,52px);text-transform:uppercase;text-align:center;margin:0 0 8px;color:#fff;text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000">This hits <span style="color:#FF5A1F">BETTER</span> than an energy drink, bro</h2>
-    
-
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;justify-content:center;max-width:640px;margin:0 auto 48px">
-      <div style="flex:1 1 220px;max-width:250px;background:#242424;border:2px solid #F7941D;border-radius:14px;padding:24px 20px;text-align:center;display:flex;flex-direction:column;gap:8px">
-        <span style="font-size:28px">🎯</span>
-        <div style="font-family:Arial,sans-serif;font-weight:800;font-size:16px;color:#fff">Locked in for hours</div>
-        <div style="font-size:13px;color:#fff;opacity:.7">No mid-session crash mid-raid <br>or mid-deadline</div>
-      </div>
-      <div style="background:#242424;border:2px solid #F7941D;border-radius:14px;padding:24px 20px;text-align:center;display:flex;flex-direction:column;gap:8px">
-        <span style="font-size:28px">🧠</span>
-        <div style="font-family:Arial,sans-serif;font-weight:800;font-size:16px;color:#fff">Clear-headed</div>
-        <div style="font-size:13px;color:#fff;opacity:.7">Sharp focus without the wired, jittery buzz</div>
-      </div>
-      <div style="background:#242424;border:2px solid #F7941D;border-radius:14px;padding:24px 20px;text-align:center;display:flex;flex-direction:column;gap:8px">
-        <span style="font-size:28px">😌</span>
-        <div style="font-family:Arial,sans-serif;font-weight:800;font-size:16px;color:#fff">Calm, not wired</div>
-        <div style="font-size:13px;color:#fff;opacity:.7">Steady energy, zero shaky hands</div>
-      </div>
-      <div style="background:#242424;border:2px solid #F7941D;border-radius:14px;padding:24px 20px;text-align:center;display:flex;flex-direction:column;gap:8px">
-        <span style="font-size:28px">🌙</span>
-        <div style="font-family:Arial,sans-serif;font-weight:800;font-size:16px;color:#fff">Sleep unaffected</div>
-        <div style="font-size:13px;color:#fff;opacity:.7">Low caffeine means no 2am crash-and-burn</div>
-      </div>
-    </div>
-
-    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;max-width:1100px;margin:0 auto">
-      <div style="flex:1 1 380px;background:#242424;border:2px solid #555;border-radius:16px;padding:36px 32px;display:flex;align-items:center;gap:28px">
-        <img src="./assets/energy-can.png" alt="Energy drink can" style="width:130px;height:220px;object-fit:cover;flex-shrink:0;border-radius:8px">
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <div style="display:flex;align-items:center;gap:10px;font-family:Arial,sans-serif;font-weight:800;font-size:20px;color:#fff">⚡ Energy drink</div>
-          <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;color:#fff">
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#E24444;font-weight:900">✕</span>160mg caffeine</div>
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#E24444;font-weight:900">✕</span>Sugar crash at 2am</div>
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#E24444;font-weight:900">✕</span>Hands shake mid-raid</div>
+          <div class="hero-points">
+            <div class="hero-point"><i>⭐</i>Limited edition packaging</div>
+            <div class="hero-point"><i>❤️</i>Built for the fans who never log off</div>
+            <div class="hero-point"><i>⚡</i>Get it before the restock</div>
           </div>
-        </div>
-      </div>
-      <div style="flex:1 1 380px;background:#242424;border:2px solid #F7941D;border-radius:16px;padding:36px 32px;display:flex;align-items:center;gap:28px">
-        <img src="./assets/coffee-bag-v2.png" alt="Raw coffee+ Exclusive Edition bag" style="width:150px;height:220px;object-fit:cover;object-position:top;flex-shrink:0;border-radius:8px">
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <div style="display:flex;align-items:center;gap:10px;font-family:Arial,sans-serif;font-weight:800;font-size:20px;color:#F7941D">🚀 Raw coffee+</div>
-          <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;color:#fff">
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#F7941D;font-weight:900">✓</span>~23mg caffeine</div>
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#F7941D;font-weight:900">✓</span>3,000mg Creatine for your brain</div>
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="color: rgb(247, 148, 29); font-weight: 900;">✓</span>Steady focus for hours, <br>no crash</div>
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#F7941D;font-weight:900">✓</span>Lion's Mane 1,000mg — focus, not the fake kind</div>
-            <div style="display:flex;gap:10px;align-items:baseline"><span style="color:#F7941D;font-weight:900">✓</span>L-Theanine + L-Tyrosine — calm focus, no jitters</div>
+
+          <div class="price-card">
+            <div class="price-label">FAN PRICE</div>
+            <div class="old-price">$43.20</div>
+            <div class="new-price">$32.40</div>
+            <div class="discount">-25%</div>
           </div>
-        </div>
-      </div>
-    </div>
 
-    
-  </div>
-
-  <!-- BLOCK 3: MID BAR -->
-  <div data-screen-label="03 Mid CTA bar" style="padding:36px 6vw;background:linear-gradient(90deg,#F7941D,#FF5A1F);border-bottom:4px solid #000">
-    <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:24px;justify-content:space-between;flex-wrap:wrap">
-      <div style="display:flex;align-items:center;gap:18px;flex:1 1 320px;min-width:260px">
-        
-        <div style="flex:1">
-          <div style="font-family:'Anton',Arial,sans-serif;font-size:20px;color:#1A1A1A;text-transform:uppercase">YOUR FAN PRICE IS STILL AVAILABLE</div>
-          <div style="font-size:13px;color:#1A1A1A;font-weight:700;margin-bottom:8px"><p class="p1" style="margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-size-adjust: none; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-variant-emoji: normal; font-weight: 400; font-stretch: normal; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);"><b>25% off for the first 500 orders only</b></p></div>
-          <div style="max-width:320px">
-            
-            <div style="position:relative;background:#1A1A1A;border:2px solid #000;border-radius:20px;height:26px;overflow:hidden">
-              <div style="position:absolute;inset:0;width:49.4%;background:linear-gradient(90deg,#FFE066,#FF5A1F)"></div>
-              <span style="position:absolute;left:49.4%;top:0;bottom:0;transform:translateX(-100%);display:flex;align-items:center;padding-right:8px;font-family:Arial,sans-serif;font-weight:800;font-size:13px;color:#fff">247</span>
-              <span style="position:absolute;left:49.4%;top:0;bottom:0;display:flex;align-items:center;padding-left:6px;font-family:Arial,sans-serif;font-weight:700;font-size:13px;color:#fff;opacity:.6">/ 500</span>
+          <div class="stock">
+            <div class="stock-label">First 500 orders get the fan price</div>
+            <div class="stock-bar">
+              <div class="stock-fill"></div>
+              <span>247 / 500</span>
             </div>
           </div>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;background:#1A1A1A;border:3px solid #000;border-radius:10px;padding:10px 18px">
-        <span style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:22px;color:#888;text-decoration:line-through">$43.20</span>
-        <span style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:26px;color:#fff">$32.40</span>
-      </div>
-      
-      <a href="https://amazon.com" target="_blank" style="text-decoration:none;display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;box-shadow:0 6px 0 rgba(0,0,0,.35)">
-        <span style="background:#1A1A1A;color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:15px;padding:13px 20px;display:flex;align-items:center">amazon</span>
-        <span style="background:linear-gradient(90deg,#F7941D,#C1560E);color:#fff;font-family:Arial,sans-serif;font-weight:800;font-size:15px;padding:13px 24px;display:flex;align-items:center"><span style="font-size: 18px;">Get the Raw Coffee+&nbsp;</span></span>
-      </a>
-    </div>
-  </div>
 
-  <!-- BLOCK 4: PHOTO GRID -->
-  <div data-screen-label="04 Photo grid" style="padding:72px 6vw;background:#1A1A1A;border-bottom:4px solid #F7941D">
-    <h2 style="font-family:'Anton',Arial,sans-serif;font-size:clamp(28px,4vw,44px);text-transform:uppercase;text-align:center;margin:0 0 40px;color:#fff">Straight from the fan squad</h2>
-    <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:22px">
-      <sc-for list="{{ photoSlots }}" as="ps" hint-placeholder-count="4">
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="aspect-ratio:1/1;border-radius:12px;border:4px solid #fff;box-shadow:0 0 0 3px #000;overflow:hidden;background:#2E2E2E">
-            <image-slot id="{{ ps.id }}" shape="rect" placeholder="{{ ps.placeholder }}"></image-slot>
+          <div class="hero-cta">
+            <a class="amazon-btn" href="#email-capture">
+              <span class="amazon">amazon</span>
+              <span class="offer">Get the Raw Coffee+</span>
+            </a>
           </div>
-          <div style="text-align:center;font-size:12px;color:#fff;opacity:.6;font-weight:700">{{ ps.caption }}</div>
-        </div>
-      </sc-for>
-    </div>
-  </div>
-
-  <!-- BLOCK 5: TESTIMONIALS -->
-  <div data-screen-label="05 Testimonials" style="padding:72px 6vw;background:#1A1A1A;border-bottom:4px solid #F7941D">
-    <h2 style="font-family:'Anton',Arial,sans-serif;font-size:clamp(28px,4vw,44px);text-transform:uppercase;text-align:center;margin:0 0 40px;color:#fff">Verified by the squad</h2>
-    <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;max-width:1080px;margin:0 auto">
-      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
-        <div style="flex:1 1 300px;max-width:340px;background:#2E2E2E;border:3px solid #000;border-radius:14px;padding:24px;position:relative;box-shadow:5px 5px 0 rgba(247,148,29,.5)">
-          <div style="font-size:28px;color:#F7941D;line-height:1;margin-bottom:8px">"</div>
-          <div style="font-size:15px;line-height:1.5;color:#fff;margin-bottom:16px">{{ t.quote }}</div>
-          <div style="font-size:13px;font-weight:700;color:#F7941D">{{ t.author }}</div>
-        </div>
-      </sc-for>
-    </div>
-  </div>
-
-  <!-- BLOCK 6: EMAIL CAPTURE -->
-  <div data-screen-label="06 Email capture" style="padding:72px 6vw;background:radial-gradient(ellipse 70% 60% at 25% 30%,rgba(247,148,29,.18),transparent 70%),#1A1A1A;border-bottom:4px solid #F7941D">
-    <div style="max-width:640px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px">
-      <div style="font-size:44px">📬</div>
-      <h2 style="font-family:'Anton',Arial,sans-serif;font-size:clamp(26px,4vw,40px);text-transform:uppercase;margin:0;color:#fff"><span style="font-size: clamp(32px, 5vw, 56px);">Your fan price is waiting<br></span>get the raw coffee with -25% off</h2>
-
-      <div style="display:flex;align-items:center;gap:10px">
-        <span style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:22px;color:#888;text-decoration:line-through">$43.20</span>
-        <span style="font-family: Arial Black,Arial,sans-serif; font-weight: 900; font-size: 28px; color: #F7941D">$32.40</span>
-        
-      </div>
-      <div style="max-width:320px;width:100%">
-        <div style="position:relative;background:#2E2E2E;border:2px solid #000;border-radius:20px;height:26px;overflow:hidden">
-          <div style="position:absolute;inset:0;width:49.4%;background:linear-gradient(90deg,#F7941D,#FF5A1F)"></div>
-          <span style="position:absolute;left:49.4%;top:0;bottom:0;transform:translateX(-100%);display:flex;align-items:center;padding-right:8px;font-family:Arial,sans-serif;font-weight:800;font-size:13px;color:#fff">247</span>
-          <span style="position:absolute;left:49.4%;top:0;bottom:0;display:flex;align-items:center;padding-left:6px;font-family:Arial,sans-serif;font-weight:700;font-size:13px;color:#fff;opacity:.6">/ 500</span>
         </div>
       </div>
-      
-      <sc-if value="{{ emailSubmitted }}" hint-placeholder-val="{{ false }}">
-        <div style="background:#2E2E2E;border:3px solid #72CC1D;border-radius:10px;padding:16px 22px;font-weight:700;color:#72CC1D">Code sent! Check your inbox 🎉</div>
-      </sc-if>
-      <sc-if value="{{ !emailSubmitted }}" hint-placeholder-val="{{ true }}">
-        <form onSubmit="{{ submitEmail }}" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%;max-width:460px">
-          <input type="email" required="{{ true }}" value="{{ email }}" onChange="{{ setEmail }}" placeholder="you@example.com" style="flex:1 1 240px;padding:14px 16px;border-radius:8px;border:3px solid #000;background:#2E2E2E;color:#fff;font-size:15px">
-          <button type="submit" style="background:#F7941D;color:#1A1A1A;font-family:Arial,sans-serif;font-weight:700;font-size:15px;padding:14px 22px;border-radius:8px;border:3px solid #000;box-shadow:4px 4px 0 #000;cursor:pointer" style-hover="background:#FF5A1F;color:#fff">Try Raw Coffee+</button>
-        </form>
-      </sc-if>
-      <div style="font-size:12px;color:#fff;opacity:.5">By submitting you agree to receive emails from Raw Gravity. Unsubscribe anytime.</div>
-    </div>
-  </div>
+    </section>
 
-  <!-- BLOCK 7: FINAL CTA + FOOTER -->
-  <div data-screen-label="07 Final CTA" style="padding:56px 6vw 40px;background:#1A1A1A;text-align:left">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;max-width:1200px;margin:0 auto">
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="font-family:'Anton',Arial,sans-serif;font-size:24px;letter-spacing:1px;color:#fff;text-transform:uppercase">TMM x Raw Gravity</div>
-        <div style="font-size:14px;color:#fff;opacity:.7">hello@rawgravity.com</div>
-        <div style="font-size:14px;color:#fff;opacity:.7">Austin, TX</div>
-        <a href="#" style="font-size:13px;text-decoration:underline;margin-top:4px">Privacy Policy</a>
+    <section class="section-panel">
+      <div class="wrap">
+        <h2 class="section-title">This hits <span class="accent">BETTER</span> than an energy drink, bro</h2>
+
+        <div class="benefit-grid">
+          <article class="benefit">
+            <div class="emoji">🎯</div>
+            <strong>Locked in for hours</strong>
+            <p>No mid-session crash mid-raid or mid-deadline</p>
+          </article>
+          <article class="benefit">
+            <div class="emoji">🧠</div>
+            <strong>Clear-headed</strong>
+            <p>Sharp focus without the wired, jittery buzz</p>
+          </article>
+          <article class="benefit">
+            <div class="emoji">😌</div>
+            <strong>Calm, not wired</strong>
+            <p>Steady energy, zero shaky hands</p>
+          </article>
+          <article class="benefit">
+            <div class="emoji">🌙</div>
+            <strong>Sleep unaffected</strong>
+            <p>Low caffeine means no 2am crash-and-burn</p>
+          </article>
+        </div>
+
+        <div class="compare-grid">
+          <article class="compare-card energy">
+            <img src="./assets/energy-can.png" alt="Energy drink can">
+            <div>
+              <h3>⚡ Energy drink</h3>
+              <div class="checks">
+                <div class="check"><span class="xmark">✕</span>160mg caffeine</div>
+                <div class="check"><span class="xmark">✕</span>Sugar crash at 2am</div>
+                <div class="check"><span class="xmark">✕</span>Hands shake mid-raid</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="compare-card win">
+            <img src="./assets/coffee-bag-v2.png" alt="Raw Coffee+ Exclusive Edition bag">
+            <div>
+              <h3>🚀 Raw coffee+</h3>
+              <div class="checks">
+                <div class="check"><span class="checkmark">✓</span>~23mg caffeine</div>
+                <div class="check"><span class="checkmark">✓</span>3,000mg Creatine for your brain</div>
+                <div class="check"><span class="checkmark">✓</span>Steady focus for hours, no crash</div>
+                <div class="check"><span class="checkmark">✓</span>Lion's Mane 1,000mg — focus, not the fake kind</div>
+                <div class="check"><span class="checkmark">✓</span>L-Theanine + L-Tyrosine — calm focus, no jitters</div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
-        <a href="https://amazon.com" target="_blank" style="text-decoration:none;display:inline-flex;align-items:stretch;border-radius:999px;overflow:hidden;box-shadow:0 6px 0 rgba(0,0,0,.35)">
-          <span style="background:#2E2E2E;color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:17px;padding:18px 26px;display:flex;align-items:center">amazon</span>
-          <span style="background:linear-gradient(90deg,#F7941D,#C1560E);color:#fff;font-family:Arial,sans-serif;font-weight:800;font-size:18px;padding:18px 30px;display:flex;align-items:center">Get the Raw Coffee+&nbsp;</span>
+    </section>
+
+    <section class="mid-cta">
+      <div class="wrap mid-inner">
+        <div class="mid-copy">
+          <strong>Your fan price is still available.</strong>
+          <p>-25% off for the first 500 orders only</p>
+          <div class="stock-bar" style="max-width:320px">
+            <div class="stock-fill"></div>
+            <span>247 / 500</span>
+          </div>
+        </div>
+
+        <div class="mid-price">
+          <span class="old">$43.20</span>
+          <span class="new">$32.40</span>
+        </div>
+
+        <a class="amazon-btn" href="#email-capture">
+          <span class="amazon">amazon</span>
+          <span class="offer">Get the Raw Coffee+</span>
         </a>
-        
       </div>
-    </div>
+    </section>
 
-    <div style="max-width:1200px;margin:40px auto 0;border-top:1px solid #333"></div>
+    <section class="section-panel">
+      <div class="wrap">
+        <h2 class="section-title">Straight from the fan squad</h2>
 
-    <div style="max-width:1200px;margin:28px auto 0;display:flex;gap:14px;flex-wrap:wrap">
-      <sc-for list="{{ trustBadges }}" as="tb" hint-placeholder-count="6">
-        <span style="border:1px solid #444;border-radius:999px;padding:10px 20px;font-size:14px;color:#fff;background:#242424">{{ tb }}</span>
-      </sc-for>
-    </div>
+        <div class="photo-grid">
+          <div class="photo-card">
+            <div class="photo-frame"><img src="./assets/fan-1.png" alt="Fan holding Raw Coffee+"></div>
+            <div class="photo-caption">TMM fan • Raw Coffee+</div>
+          </div>
+          <div class="photo-card">
+            <div class="photo-frame"><img src="./assets/fan-2.png" alt="Fan holding Raw Coffee+"></div>
+            <div class="photo-caption">TMM fan • Raw Coffee+</div>
+          </div>
+          <div class="photo-card">
+            <div class="photo-frame"><img src="./assets/fan-3.png" alt="Fan holding Raw Coffee+"></div>
+            <div class="photo-caption">TMM fan • Raw Coffee+</div>
+          </div>
+          <div class="photo-card">
+            <div class="photo-frame"><img src="./assets/fan-4.png" alt="Fan holding Raw Coffee+"></div>
+            <div class="photo-caption">TMM fan • Raw Coffee+</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div style="max-width:1200px;margin:28px auto 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:#fff;opacity:.45">
-      <div>© 2026 Raw Gravity x TAKE my MUFFIN. All rights reserved.</div>
-      <div>Dietary supplement — statements not evaluated by the FDA.</div>
-    </div>
-  </div>
+    <section class="section-panel">
+      <div class="wrap">
+        <h2 class="section-title">Verified by the squad</h2>
 
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = {
-    copiedBlock: null,
-    email: '',
-    emailSubmitted: false
-  };
+        <div class="testimonials">
+          <article class="testimonial">
+            <div class="quote-mark">"</div>
+            <p>Three raid nights in a row till 5am and I was still sharp. Didn’t expect that from a coffee packet.</p>
+            <strong>Dan M., dev, TMM fan</strong>
+          </article>
+          <article class="testimonial">
+            <div class="quote-mark">"</div>
+            <p>Creatine in coffee sounds insane until you read the studies. Then it sounds obvious.</p>
+            <strong>r/nootropics, verified purchase</strong>
+          </article>
+          <article class="testimonial">
+            <div class="quote-mark">"</div>
+            <p>The collab packaging alone is worth it. That it also works is a bonus.</p>
+            <strong>Alex T., 24</strong>
+          </article>
+          <article class="testimonial">
+            <div class="quote-mark">"</div>
+            <p>No jitters, no crash, just steady focus through a full workday of back-to-back meetings.</p>
+            <strong>Marta K., 29</strong>
+          </article>
+          <article class="testimonial">
+            <div class="quote-mark">"</div>
+            <p>A month ago, I gave up energy drinks in favor of Raw Coffee+. My sleep has genuinely improved.</p>
+            <strong>Ivan P., streamer</strong>
+          </article>
+          <article class="testimonial">
+            <div class="quote-mark">"</div>
+            <p>Tastes like real coffee, not a chalky supplement. Didn’t expect that.</p>
+            <strong>Sasha V., verified purchase</strong>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  copyCode = (block) => {
-    this.setState({ copiedBlock: block });
-    clearTimeout(this._t);
-    this._t = setTimeout(() => this.setState({ copiedBlock: null }), 1600);
-    try {
-      if (navigator.clipboard) navigator.clipboard.writeText('TMM2026').catch(() => {});
-    } catch (e) {}
-  };
+    <section class="email-section" id="email-capture">
+      <div class="wrap email-box">
+        <div class="email-icon">📬</div>
+        <h2>Your fan price is waiting<br>get the raw coffee with -25% off</h2>
 
-  setEmail = (e) => this.setState({ email: e.target.value });
+        <div class="price-line">
+          <span class="old">$43.20</span>
+          <span class="new">$32.40</span>
+        </div>
 
-  submitEmail = (e) => {
-    e.preventDefault();
-    if (!this.state.email.includes('@')) return;
-    this.setState({ emailSubmitted: true });
-  };
+        <div class="stock-bar" style="max-width:320px;margin:0 auto 18px">
+          <div class="stock-fill"></div>
+          <span>247 / 500</span>
+        </div>
 
-  renderVals() {
-    const label = (block, def) => this.state.copiedBlock === block ? 'Copied!' : def;
-    return {
-      marqueeItems: [
-        'LIMITED COLLAB EDITION', 'FAN PRICE FOR THE FIRST 500 ORDERS ONLY',
-        'LIMITED COLLAB EDITION', 'FAN PRICE FOR THE FIRST 500 ORDERS ONLY'
-      ],
-      copyCode: this.copyCode,
-      heroCopyLabel: label('hero', 'Tap to copy'),
-      midCopyLabel: label('mid', 'Copy'),
-      finalCopyLabel: label('final', 'Tap to copy'),
-      ingredients: [
-        { name: "Lion's Mane 1,000mg", note: 'focus, not the fake kind' },
-        { name: 'Creatine Monohydrate 3,000mg', note: 'only coffee with this dose' },
-        { name: 'L-Theanine + L-Tyrosine', note: 'calm focus, no jitters' },
-        { name: '~23mg caffeine (decaf arabica)', note: "won't wreck your sleep" }
-      ],
-      photoSlots: [
-        { id: 'photo-1', placeholder: 'Fan photo', caption: 'Add fan photo' },
-        { id: 'photo-2', placeholder: 'Fan photo', caption: 'Add fan photo' },
-        { id: 'photo-3', placeholder: 'Fan photo', caption: 'Add fan photo' },
-        { id: 'photo-4', placeholder: 'Fan photo', caption: 'Add fan photo' }
-      ],
-      testimonials: [
-        { quote: 'Three raid nights in a row till 5am and I was still sharp. Didn\u2019t expect that from a coffee packet.', author: 'Dan M., dev, TMM fan' },
-        { quote: 'Creatine in coffee sounds insane until you read the studies. Then it sounds obvious.', author: 'r/nootropics, verified purchase' },
-        { quote: 'The collab packaging alone is worth it. That it also works is a bonus.', author: 'Alex T., 24' },
-        { quote: 'No jitters, no crash, just steady focus through a full workday of back-to-back meetings.', author: 'Marta K., 29' },
-        { quote: 'A month ago, I gave up energy drinks in favor of Raw Coffee+. My sleep has genuinely improved.\nIvan P., streamer', author: 'Ivan P., streamer' },
-        { quote: 'Tastes like real coffee, not a chalky supplement. Didn\u2019t expect that.', author: 'Sasha V., verified purchase' }
-      ],
-      email: this.state.email,
-      setEmail: this.setEmail,
-      submitEmail: this.submitEmail,
-      emailSubmitted: this.state.emailSubmitted,
-      trustBadges: ['100% Secure Checkout', 'Made in USA', 'Non-GMO', 'Vegan Friendly', 'No Proprietary Blends', 'Amazon Buyer Protection']
+        <form class="email-form" id="lead-form">
+          <input id="email-input" type="email" name="email" autocomplete="email" required placeholder="you@example.com" aria-label="Email">
+          <button id="email-submit" type="submit">Get the 25% code</button>
+        </form>
+
+        <div class="success" id="success-state">Code sent! Check your inbox 🎉</div>
+        <div class="error" id="error-state">Something went wrong. Please try again.</div>
+        <div class="fine">By submitting you agree to receive emails from Raw Gravity. Unsubscribe anytime.</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-title">TMM x Raw Gravity</div>
+            <div class="footer-meta">Austin, TX</div>
+            <a class="privacy" href="#">Privacy Policy</a>
+          </div>
+
+          <a class="amazon-btn" href="#email-capture">
+            <span class="amazon">amazon</span>
+            <span class="offer">Get the Raw Coffee+</span>
+          </a>
+        </div>
+
+        <div class="trust">
+          <span>100% Secure Checkout</span>
+          <span>Made in USA</span>
+          <span>Non-GMO</span>
+          <span>Vegan Friendly</span>
+          <span>No Proprietary Blends</span>
+          <span>Amazon Buyer Protection</span>
+        </div>
+
+        <div class="legal">
+          <span>© 2026 Raw Gravity x TAKE my MUFFIN. All rights reserved.</span>
+          <span>Dietary supplement — statements not evaluated by the FDA.</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const LANDING_NAME = "tmm2";
+
+    const AMAZON_URLS = {
+      tiktok: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_9EAB36473ED1EB5F2AC4DBD00BF649CE_afap_abs&ref_=aa_maas&tag=maas",
+      meta: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_B05D582BAB7E5BC8F40DEBA1EBC61AEE_afap_abs&ref_=aa_maas&tag=maas",
+      klaviyo: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_25B95FF8BD805EF1A9DF6465C32333F9_afap_abs&ref_=aa_maas&tag=maas",
+      instagram: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_DA3922AD16009007A17A120E9C2F3E79_afap_abs&ref_=aa_maas&tag=maas"
     };
-  }
-}
-</script>
+
+    const DEFAULT_AMAZON_URL = AMAZON_URLS.meta;
+    const form = document.getElementById("lead-form");
+    const emailInput = document.getElementById("email-input");
+    const submitButton = document.getElementById("email-submit");
+    const successState = document.getElementById("success-state");
+    const errorState = document.getElementById("error-state");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      const params = new URLSearchParams(window.location.search);
+      const sourceRaw = (params.get("source") || "meta").toLowerCase();
+      const source = ["tiktok","meta","klaviyo","instagram"].includes(sourceRaw) ? sourceRaw : "meta";
+      const creative = params.get("creative") || "unknown";
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+      errorState.style.display = "none";
+
+      try {
+        const response = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({
+            email,
+            landing: LANDING_NAME,
+            source,
+            creative
+          })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.error || "Subscription failed");
+        }
+
+        form.style.display = "none";
+        successState.style.display = "block";
+
+        if (typeof window.rawGravityTrackTikTokLead === "function") {
+          window.rawGravityTrackTikTokLead();
+        }
+        if (typeof window.rawGravityTrackMetaLead === "function") {
+          window.rawGravityTrackMetaLead();
+        }
+
+        const amazonUrl = result.amazonUrl || AMAZON_URLS[source] || DEFAULT_AMAZON_URL;
+
+        setTimeout(() => {
+          window.location.href = amazonUrl;
+        }, 2000);
+      } catch (error) {
+        console.error("TMM2 Klaviyo submission error:", error);
+        submitButton.disabled = false;
+        submitButton.textContent = "Get the 25% code";
+        errorState.style.display = "block";
+      }
+    });
+
+    document.querySelectorAll('a[href="#email-capture"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const target = document.getElementById("email-capture");
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({behavior:"smooth", block:"center"});
+          setTimeout(() => emailInput.focus(), 500);
+        }
+      });
+    });
+  </script>
 </body>
 </html>

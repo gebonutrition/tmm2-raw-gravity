@@ -1,89 +1,51 @@
 (function () {
-  const params = new URLSearchParams(window.location.search);
-  const pixelId = params.get('pixel');
-
-  if (!pixelId) {
-    return;
-  }
+  const pixelId = new URLSearchParams(window.location.search).get("pixel");
+  if (!pixelId) return;
 
   !function (w, d, t) {
     w.TiktokAnalyticsObject = t;
-
-    const ttq = w[t] = w[t] || [];
-
-    ttq.methods = [
-      'page',
-      'track',
-      'identify',
-      'instances',
-      'debug',
-      'on',
-      'off',
-      'once',
-      'ready',
-      'alias',
-      'group',
-      'enableCookie',
-      'disableCookie'
-    ];
-
+    var ttq = w[t] = w[t] || [];
+    ttq.methods = ["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
     ttq.setAndDefer = function (t, e) {
       t[e] = function () {
         t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
       };
     };
+    for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
 
-    for (let i = 0; i < ttq.methods.length; i++) {
-      ttq.setAndDefer(ttq, ttq.methods[i]);
-    }
-
-    ttq.instance = function (id) {
-      const instance = ttq._i[id] || [];
-
-      for (let i = 0; i < ttq.methods.length; i++) {
-        ttq.setAndDefer(instance, ttq.methods[i]);
-      }
-
-      return instance;
+    ttq.instance = function (t) {
+      var e = ttq._i[t] || [];
+      for (var n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
+      return e;
     };
 
-    ttq.load = function (id, options) {
-      const src =
-        'https://analytics.tiktok.com/i18n/pixel/events.js';
-
+    ttq.load = function (e, n) {
+      var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
       ttq._i = ttq._i || {};
-      ttq._i[id] = [];
-      ttq._i[id]._u = src;
-
+      ttq._i[e] = [];
+      ttq._i[e]._u = i;
       ttq._t = ttq._t || {};
-      ttq._t[id] = +new Date;
-
+      ttq._t[e] = +new Date;
       ttq._o = ttq._o || {};
-      ttq._o[id] = options || {};
-
-      const script = d.createElement('script');
-      script.async = true;
-      script.src = src + '?sdkid=' + id + '&lib=' + t;
-
-      const first = d.getElementsByTagName('script')[0];
-      first.parentNode.insertBefore(script, first);
+      ttq._o[e] = n || {};
+      var o = d.createElement("script");
+      o.async = true;
+      o.src = i + "?sdkid=" + e + "&lib=" + t;
+      var a = d.getElementsByTagName("script")[0];
+      a.parentNode.insertBefore(o, a);
     };
 
     ttq.load(pixelId);
     ttq.page();
 
-  }(window, document, 'ttq');
-
-  let leadTracked = false;
-
-  window.rawGravityTrackTikTokLead = function () {
-    if (leadTracked) return;
-
-    leadTracked = true;
-
-    if (window.ttq) {
-      window.ttq.track('SubmitForm');
-      window.ttq.track('Contact');
-    }
-  };
+    let leadTracked = false;
+    w.rawGravityTrackTikTokLead = function () {
+      if (leadTracked) return;
+      leadTracked = true;
+      if (typeof ttq !== "undefined") {
+        ttq.instance(pixelId).track("SubmitForm", {content_name:"Coupon Code Revealed"});
+        ttq.instance(pixelId).track("Contact", {content_type:"promo_code", content_name:"Coupon Code Revealed"});
+      }
+    };
+  }(window, document, "ttq");
 })();
