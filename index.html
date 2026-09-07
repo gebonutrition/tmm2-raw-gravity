@@ -74,11 +74,19 @@
       border-bottom:4px solid #111
     }
     .hero-art{
-      position:absolute;inset:0;
-      background-image:url("./assets/hero-bg-final.png");
+      position:absolute;
+      inset:0;
       background-repeat:no-repeat;
+    }
+
+    .hero-art-desktop{
+      background-image:url("./assets/hero-bg-final.png");
       background-position:top right;
       background-size:auto 108%;
+    }
+
+    .hero-art-mobile{
+      display:none;
     }
     .hero-shade{
       position:absolute;inset:0;
@@ -113,6 +121,20 @@
       line-height:1.02;
       letter-spacing:0;
       text-shadow:-3px -3px 0 #000,3px -3px 0 #000,-3px 3px 0 #000,3px 3px 0 #000,0 8px 0 rgba(0,0,0,.4)
+    }
+    .hero-line-1,
+    .hero-line-2,
+    .hero-line-3,
+    .hero-line-4{
+      display:inline;
+    }
+
+    .hero-line-1::after{
+      content:" ";
+    }
+
+    .hero-line-2::after{
+      content:" ";
     }
     .hero h1 .x{color:var(--orange)}
     .hero-points{display:grid;gap:10px;margin:24px 0 22px}
@@ -229,10 +251,14 @@
     .testimonial strong{color:var(--orange);font-size:13px}
 
     .email-section{
-      padding:72px 0;
+      padding:64px 0 72px;
       background:radial-gradient(ellipse 70% 60% at 25% 30%,rgba(247,148,29,.18),transparent 70%),var(--bg)
     }
-    .email-box{max-width:720px;margin:0 auto;text-align:center}
+    .email-box{
+      width:min(680px,100%);
+      margin:0 auto;
+      text-align:center;
+    }
     .email-icon{font-size:44px}
     .email-box h2{font-size:clamp(28px,4vw,48px);margin:12px 0}
     .email-box .price-line{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:16px}
@@ -312,9 +338,43 @@
         background:
           radial-gradient(circle at 76% 7%,#FFDA8E 0%,#FDB94A 30%,#F7941D 62%,#E67A0F 100%);
       }
-      .hero-art{
-        background-size:auto 100%;
-        background-position:100% bottom;
+      .hero-art-desktop{
+        display:none;
+      }
+
+      .hero-art-mobile{
+        display:block;
+        position:absolute;
+        right:-2%;
+        bottom:0;
+        width:58%;
+        height:58%;
+        background-image:url("./assets/coffee-bag-v2.png");
+        background-repeat:no-repeat;
+        background-position:right bottom;
+        background-size:contain;
+        z-index:1;
+      }
+      .hero-shade{
+        z-index:0;
+      }
+      .hero h1{
+        max-width:330px;
+        font-size:clamp(34px,10vw,46px);
+        line-height:.98;
+      }
+
+      .hero-line-1,
+      .hero-line-2,
+      .hero-line-3,
+      .hero-line-4{
+        display:block;
+      }
+
+      .hero-line-1::after,
+      .hero-line-2::after,
+      .hero-line-3::after{
+        content:none;
       }
       .hero-shade{
         background:
@@ -328,7 +388,12 @@
           );
       }
       .hero-inner{min-height:720px;padding:28px 0 36px;align-items:flex-start}
-      .hero-copy{width:100%;padding:0}
+      .hero-copy{
+        width:100%;
+        padding:0;
+        position:relative;
+        z-index:2;
+      }
       .badge{font-size:11px;padding:4px 10px;margin-bottom:12px}
       .hero h1{font-size:clamp(34px,9vw,48px);max-width:430px}
       .hero-points{gap:9px;margin:16px 0 18px;max-width:290px}
@@ -345,7 +410,11 @@
       .stock-label{font-size:11px;margin-bottom:5px}
       .stock-bar{height:20px}
       .stock-bar span{font-size:10px}
-      .hero-cta{margin-top:15px}
+      .hero-cta{
+        margin-top:15px;
+        position:relative;
+        z-index:3;
+      }
       .amazon-btn .amazon{padding:12px 13px;font-size:12px}
       .amazon-btn .offer{padding:12px 13px;font-size:12px;white-space:nowrap}
 
@@ -420,9 +489,12 @@
 
     @media (max-width: 390px){
       .hero{min-height:760px}
-      .hero-inner{min-height:760px}
+      .hero-inner{
+        min-height:760px;
+        padding:28px 0 36px;
+        align-items:flex-start;
+      }
       .hero h1{font-size:32px}
-      .hero-art{background-size:auto 75%;background-position:74% bottom}
       .price-card,.stock{width:182px}
     }
   </style>
@@ -442,7 +514,8 @@
 
   <main>
     <section class="hero" id="top">
-      <div class="hero-art" aria-hidden="true"></div>
+      <div class="hero-art hero-art-desktop" aria-hidden="true"></div>
+      <div class="hero-art hero-art-mobile" aria-hidden="true"></div>
       <div class="hero-shade" aria-hidden="true"></div>
 
       <div class="wrap hero-inner">
@@ -450,10 +523,10 @@
           <div class="badge">EXCLUSIVE EDITION</div>
 
           <h1>
-            <span>Take My Muffin</span><br class="mobile-only">
-            <span class="x">x</span> Raw Gravity<br>
-            <span>presents raw</span><br class="mobile-only">
-            coffee+
+            <span class="hero-line-1">Take My Muffin</span>
+            <span class="hero-line-2"><span class="x">x</span> Raw Gravity</span>
+            <span class="hero-line-3">presents raw</span>
+            <span class="hero-line-4">coffee+</span>
           </h1>
 
           <div class="hero-points">
@@ -490,8 +563,7 @@
     <section class="section-panel">
       <div class="wrap">
         <h2 class="section-title">
-          This hits <span class="accent">BETTER</span> than<br>
-          an energy drink, bro
+          This hits <span class="accent">BETTER</span> than an energy drink, bro
         </h2>
 
         <div class="benefit-grid">
