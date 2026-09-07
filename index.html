@@ -14,6 +14,7 @@
     gtag('js', new Date());
 
     gtag('config', 'G-RLRF413FGS');
+    gtag('config', 'AW-17263952479');
   </script>
 
   <script src="./pixel.js"></script>
@@ -819,7 +820,15 @@
 
         form.style.display = "none";
         successState.style.display = "block";
+        if (!googleAdsConversionSent) {
+          googleAdsConversionSent = true;
 
+          if (typeof window.gtag === "function") {
+            window.gtag("event", "conversion", {
+              send_to: "AW-17263952479/AEuYCNf9qu0cEN-EjKhA"
+            });
+          }
+        }
         if (typeof window.rawGravityTrackTikTokLead === "function") {
           window.rawGravityTrackTikTokLead();
         }
