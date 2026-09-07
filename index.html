@@ -20,7 +20,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -38,7 +38,7 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif}
+    body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif}
     img{display:block;max-width:100%}
     a{color:inherit}
     button,input{font:inherit}
@@ -77,7 +77,7 @@
       background-image:url("./assets/hero-bg-final.png");
       background-repeat:no-repeat;
       background-position:top right;
-      background-size:auto 115%;
+      background-size:auto 108%;
     }
     .hero-shade{
       position:absolute;inset:0;
@@ -107,9 +107,10 @@
     h1,h2{font-family:Anton,Arial,sans-serif;text-transform:uppercase}
     .hero h1{
       margin:0;
-      font-size:clamp(50px,6vw,84px);
+      max-width:500px;
+      font-size:clamp(40px,6vw,68px);
       line-height:1.02;
-      letter-spacing:.2px;
+      letter-spacing:0;
       text-shadow:-3px -3px 0 #000,3px -3px 0 #000,-3px 3px 0 #000,3px 3px 0 #000,0 8px 0 rgba(0,0,0,.4)
     }
     .hero h1 .x{color:var(--orange)}
@@ -249,9 +250,17 @@
     .footer-title{font-family:Anton,Arial,sans-serif;font-size:24px;letter-spacing:1px;text-transform:uppercase}
     .footer-meta{margin-top:10px;color:var(--muted);font-size:14px}
     .privacy{display:inline-block;margin-top:8px;font-size:13px;text-decoration:underline}
-    .trust{display:flex;flex-wrap:wrap;gap:10px;max-width:1200px;margin:40px auto 0}
+    .trust{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      max-width:1200px;
+      margin:28px auto 0;
+      padding-top:28px;
+      border-top:1px solid #333
+    }
     .trust span{border:1px solid #444;border-radius:999px;padding:10px 20px;font-size:13px;background:var(--panel)}
-    .legal{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:rgba(255,255,255,.45);font-size:12px;border-top:1px solid #333;margin-top:28px;padding-top:28px}
+    .legal{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:rgba(255,255,255,.45);font-size:12px;margin-top:28px;padding-top:28px}
 
     @media (max-width: 1100px){
       .wrap{width:min(var(--max),calc(100% - 44px))}
@@ -410,7 +419,7 @@
           <div class="hero-cta">
             <a class="amazon-btn" href="#email-capture">
               <span class="amazon">amazon</span>
-              <span class="offer">Get the Raw Coffee+</span>
+              <span class="offer">Get -25% off</span>
             </a>
           </div>
         </div>
@@ -492,7 +501,7 @@
 
         <a class="amazon-btn" href="#email-capture">
           <span class="amazon">amazon</span>
-          <span class="offer">Get the Raw Coffee+</span>
+          <span class="offer">Get -25% off</span>
         </a>
       </div>
     </section>
@@ -598,7 +607,7 @@
 
           <a class="amazon-btn" href="#email-capture">
             <span class="amazon">amazon</span>
-            <span class="offer">Get the Raw Coffee+</span>
+            <span class="offer">Get -25% off</span>
           </a>
         </div>
 
