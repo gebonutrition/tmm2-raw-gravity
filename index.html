@@ -6,13 +6,14 @@
   <title>Take My Muffin × Raw Gravity — Raw Coffee+</title>
   <meta name="description" content="Take My Muffin x Raw Gravity presents Raw Coffee+ — limited collab edition, fan price $32.40.">
 
-  <!-- Google Analytics: replace the placeholder with the TMM2 Measurement ID -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLRF413FGS"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID');
+
+    gtag('config', 'G-RLRF413FGS');
   </script>
 
   <script src="./pixel.js"></script>
@@ -143,8 +144,19 @@
       text-decoration:none;border-radius:999px;overflow:hidden;
       box-shadow:0 6px 0 rgba(0,0,0,.35)
     }
-    .amazon-btn .amazon{background:#1A1A1A;padding:15px 22px;font-weight:800}
-    .amazon-btn .offer{background:linear-gradient(90deg,var(--orange),var(--orange-deep));padding:15px 28px;font-weight:900}
+    .amazon-btn .amazon{
+      background:#1A1A1A;
+      color:#fff;
+      padding:15px 22px;
+      font-weight:800;
+    }
+
+    .amazon-btn .offer{
+      background:linear-gradient(90deg,var(--orange),var(--orange-deep));
+      color:#fff;
+      padding:15px 28px;
+      font-weight:900;
+    }
     .hero-cta{margin-top:24px}
 
     section{border-bottom:4px solid var(--orange)}
@@ -197,8 +209,12 @@
     .photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:1000px;margin:0 auto}
     .photo-card{display:flex;flex-direction:column;gap:8px}
     .photo-frame{
-      aspect-ratio:3/4;border-radius:12px;border:4px solid #fff;box-shadow:0 0 0 3px #000;
-      overflow:hidden;background:#2E2E2E
+      aspect-ratio:1/1;
+      border-radius:12px;
+      border:4px solid #fff;
+      box-shadow:0 0 0 3px #000;
+      overflow:hidden;
+      background:#2E2E2E;
     }
     .photo-frame img{width:100%;height:100%;object-fit:cover}
     .photo-caption{text-align:center;font-size:12px;color:var(--muted);font-weight:800}
@@ -281,17 +297,35 @@
       .marquee-track{animation-duration:14s}
       .marquee-track span{margin:0 18px}
 
+      .mobile-only{
+        display:none;
+      }
+
+      @media (max-width:768px){
+        .mobile-only{
+          display:block;
+        }
+      }
+
       .hero{
         min-height:720px;
         background:
           radial-gradient(circle at 76% 7%,#FFDA8E 0%,#FDB94A 30%,#F7941D 62%,#E67A0F 100%);
       }
       .hero-art{
-        background-size:auto 78%;
-        background-position:72% bottom;
+        background-size:auto 100%;
+        background-position:100% bottom;
       }
       .hero-shade{
-        background:linear-gradient(180deg,rgba(253,185,74,.92) 0%,rgba(253,185,74,.72) 34%,rgba(253,185,74,.18) 58%,transparent 78%)
+        background:
+          linear-gradient(
+            180deg,
+            rgba(253,185,74,.96) 0%,
+            rgba(253,185,74,.90) 30%,
+            rgba(253,185,74,.38) 55%,
+            rgba(253,185,74,.05) 78%,
+            transparent 100%
+          );
       }
       .hero-inner{min-height:720px;padding:28px 0 36px;align-items:flex-start}
       .hero-copy{width:100%;padding:0}
@@ -332,7 +366,33 @@
       .checks{gap:8px;font-size:13px}
 
       .mid-cta{padding:28px 0}
-      .mid-inner{grid-template-columns:1fr;gap:16px}
+      .mid-inner{
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+
+      .mid-copy,
+      .mid-price,
+      .mid-cta .amazon-btn{
+        width:100%;
+      }
+
+      .mid-copy .stock-bar{
+        max-width:none !important;
+      }
+
+      .mid-price{
+        justify-content:center;
+      }
+
+      .mid-cta .amazon-btn{
+        justify-content:center;
+      }
+
+      .mid-cta .amazon-btn .offer{
+        flex:1;
+        text-align:center;
+      }
       .mid-copy strong{font-size:19px}
       .mid-copy p{font-size:12px}
       .mid-price{justify-self:start;padding:10px 16px}
@@ -359,8 +419,8 @@
     }
 
     @media (max-width: 390px){
-      .hero{min-height:690px}
-      .hero-inner{min-height:690px}
+      .hero{min-height:760px}
+      .hero-inner{min-height:760px}
       .hero h1{font-size:32px}
       .hero-art{background-size:auto 75%;background-position:74% bottom}
       .price-card,.stock{width:182px}
@@ -390,9 +450,10 @@
           <div class="badge">EXCLUSIVE EDITION</div>
 
           <h1>
-            Take My Muffin
+            <span>Take My Muffin</span><br class="mobile-only">
             <span class="x">x</span> Raw Gravity<br>
-            presents raw coffee+
+            <span>presents raw</span><br class="mobile-only">
+            coffee+
           </h1>
 
           <div class="hero-points">
@@ -428,28 +489,31 @@
 
     <section class="section-panel">
       <div class="wrap">
-        <h2 class="section-title">This hits <span class="accent">BETTER</span> than an energy drink, bro</h2>
+        <h2 class="section-title">
+          This hits <span class="accent">BETTER</span> than<br>
+          an energy drink, bro
+        </h2>
 
         <div class="benefit-grid">
           <article class="benefit">
             <div class="emoji">🎯</div>
             <strong>Locked in for hours</strong>
-            <p>No mid-session crash mid-raid or mid-deadline</p>
+            <p>No mid-session crash</p>
           </article>
           <article class="benefit">
             <div class="emoji">🧠</div>
             <strong>Clear-headed</strong>
-            <p>Sharp focus without the wired, jittery buzz</p>
+            <p>Sharp focus, no jittery buzz</p>
           </article>
           <article class="benefit">
             <div class="emoji">😌</div>
             <strong>Calm, not wired</strong>
-            <p>Steady energy, zero shaky hands</p>
+            <p>Steady energy, no shaky hands</p>
           </article>
           <article class="benefit">
             <div class="emoji">🌙</div>
             <strong>Sleep unaffected</strong>
-            <p>Low caffeine means no 2am crash-and-burn</p>
+            <p>No 2am crash-and-burn</p>
           </article>
         </div>
 
@@ -632,13 +696,14 @@
     const LANDING_NAME = "tmm2";
 
     const AMAZON_URLS = {
-      tiktok: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_9EAB36473ED1EB5F2AC4DBD00BF649CE_afap_abs&ref_=aa_maas&tag=maas",
-      meta: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_B05D582BAB7E5BC8F40DEBA1EBC61AEE_afap_abs&ref_=aa_maas&tag=maas",
-      klaviyo: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_25B95FF8BD805EF1A9DF6465C32333F9_afap_abs&ref_=aa_maas&tag=maas",
-      instagram: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_DA3922AD16009007A17A120E9C2F3E79_afap_abs&ref_=aa_maas&tag=maas"
+      tiktok: "https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_3383CD7D3C5EF97F6CCA7D1718E879D6_afap_abs&ref_=aa_maas&tag=maas",
+      meta: "https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_E46438738C584A5A7808A36BE63B2723_afap_abs&ref_=aa_maas&tag=maas",
+      google: "https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_8A567DA40D5364D338FB21A1EF04734E_afap_abs&ref_=aa_maas&tag=maas",
+      dv360: "https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_9986EB1E2475865D64AA28A04713BA29_afap_abs&ref_=aa_maas&tag=maas",
+      youtube: "https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_9D2E5EAFE36AC7966B2405FF99644329_afap_abs&ref_=aa_maas&tag=maas"
     };
 
-    const DEFAULT_AMAZON_URL = AMAZON_URLS.meta;
+    const DEFAULT_AMAZON_URL = "https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_A901C78DB711B9CD58AF45E1149F65C6_afap_abs&ref_=aa_maas&tag=maas";
     const form = document.getElementById("lead-form");
     const emailInput = document.getElementById("email-input");
     const submitButton = document.getElementById("email-submit");
@@ -653,7 +718,9 @@
 
       const params = new URLSearchParams(window.location.search);
       const sourceRaw = (params.get("source") || "meta").toLowerCase();
-      const source = ["tiktok","meta","klaviyo","instagram"].includes(sourceRaw) ? sourceRaw : "meta";
+      const source = ["tiktok","meta","google","youtube","dv360"].includes(sourceRaw)
+      ? sourceRaw
+      : "unknown";
       const creative = params.get("creative") || "unknown";
 
       submitButton.disabled = true;

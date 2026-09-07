@@ -98,12 +98,22 @@ export default async function handler(req, res) {
       return res.status(502).json({ success: false, error: "Klaviyo subscription failed" });
     }
 
-    const amazonUrls = {
-      tiktok: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_9EAB36473ED1EB5F2AC4DBD00BF649CE_afap_abs&ref_=aa_maas&tag=maas",
-      meta: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_B05D582BAB7E5BC8F40DEBA1EBC61AEE_afap_abs&ref_=aa_maas&tag=maas",
-      klaviyo: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_25B95FF8BD805EF1A9DF6465C32333F9_afap_abs&ref_=aa_maas&tag=maas",
-      instagram: "https://www.amazon.com/dp/B0GTWB11LW?maas=maas_adg_DA3922AD16009007A17A120E9C2F3E79_afap_abs&ref_=aa_maas&tag=maas"
-    };
+	const amazonUrls = {
+	  tiktok:
+		"https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_3383CD7D3C5EF97F6CCA7D1718E879D6_afap_abs&ref_=aa_maas&tag=maas",
+
+	  meta:
+		"https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_E46438738C584A5A7808A36BE63B2723_afap_abs&ref_=aa_maas&tag=maas",
+
+	  google:
+		"https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_8A567DA40D5364D338FB21A1EF04734E_afap_abs&ref_=aa_maas&tag=maas",
+
+	  youtube:
+		"https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_9D2E5EAFE36AC7966B2405FF99644329_afap_abs&ref_=aa_maas&tag=maas",
+
+	  dv360:
+		"https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_9986EB1E2475865D64AA28A04713BA29_afap_abs&ref_=aa_maas&tag=maas"
+	};
 
     return res.status(200).json({
       success: true,
