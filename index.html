@@ -76,11 +76,13 @@
     }
     .hero-art{
       position:absolute;
-      inset:0;
       background-repeat:no-repeat;
+      background-position:center;
+      background-size:contain;
     }
 
     .hero-art-desktop{
+      inset:0;
       background-image:url("./assets/hero-bg-final.png");
       background-position:top right;
       background-size:auto 108%;
@@ -324,45 +326,80 @@
       .marquee-track{animation-duration:14s}
       .marquee-track span{margin:0 18px}
 
-      .mobile-only{
-        display:none;
-      }
-
-      @media (max-width:768px){
-        .mobile-only{
-          display:block;
-        }
-      }
-
+      /* MOBILE HERO */
       .hero{
-        min-height:720px;
+        min-height:600px;
         background:
-          radial-gradient(circle at 76% 7%,#FFDA8E 0%,#FDB94A 30%,#F7941D 62%,#E67A0F 100%);
+          radial-gradient(
+            circle at 80% 8%,
+            #FFDA8E 0%,
+            #FDB94A 32%,
+            #F7941D 68%,
+            #E67A0F 100%
+          );
       }
+
       .hero-art-desktop{
         display:none;
       }
 
       .hero-art-mobile{
-        display:none;
+        display:block;
         position:absolute;
-        right:2%;
-        bottom:8%;
-        width:46%;
-        height:40%;
-        background-image:url("./assets/coffee-bag-mobile.png");
+        right:0;
+        top:235px;
+        width:215px;
+        height:260px;
+        background-image:url("./assets/coffee-bag-nobg.png");
         background-repeat:no-repeat;
         background-position:right bottom;
         background-size:contain;
         z-index:1;
       }
+
       .hero-shade{
+        position:absolute;
+        inset:0;
         z-index:0;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(253,185,74,.96) 0%,
+            rgba(253,185,74,.93) 30%,
+            rgba(253,185,74,.72) 52%,
+            rgba(253,185,74,.18) 76%,
+            rgba(253,185,74,0) 100%
+          );
       }
+
+      .hero-inner{
+        position:relative;
+        z-index:2;
+        min-height:600px;
+        padding:28px 0 40px;
+        display:flex;
+        align-items:flex-start;
+      }
+
+      .hero-copy{
+        width:100%;
+        padding:0;
+        position:relative;
+        z-index:3;
+      }
+
+      .badge{
+        font-size:11px;
+        padding:4px 10px;
+        margin-bottom:12px;
+      }
+
       .hero h1{
         max-width:330px;
-        font-size:clamp(34px,10vw,46px);
-        line-height:.98;
+        margin:0;
+        font-size:32px;
+        line-height:1.05;
+        letter-spacing:0;
       }
 
       .hero-line-1,
@@ -377,44 +414,110 @@
       .hero-line-3::after{
         content:none;
       }
-      .hero-shade{
-        background:
-          linear-gradient(
-            180deg,
-            rgba(253,185,74,.96) 0%,
-            rgba(253,185,74,.90) 30%,
-            rgba(253,185,74,.38) 55%,
-            rgba(253,185,74,.05) 78%,
-            transparent 100%
-          );
+
+      .hero-points{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        margin:16px 0 18px;
+        max-width:220px;
       }
-      .hero-inner{min-height:720px;padding:28px 0 36px;align-items:flex-start}
-      .hero-copy{
-        width:100%;
-        padding:0;
+
+      .hero-point{
+        display:flex;
+        align-items:center;
+        gap:8px;
+        color:#1A1A1A;
+        font-size:12px;
+        font-weight:700;
+        line-height:1.15;
+      }
+
+      .hero-point i{
+        width:18px;
+        height:18px;
+        flex:0 0 18px;
+        font-size:9px;
+      }
+
+      .price-card{
+        width:190px;
+        padding:12px 14px;
+        display:grid;
+        grid-template-columns:1fr auto;
+        gap:5px 8px;
         position:relative;
-        z-index:2;
+        z-index:4;
       }
-      .badge{font-size:11px;padding:4px 10px;margin-bottom:12px}
-      .hero h1{font-size:clamp(34px,9vw,48px);max-width:430px}
-      .hero-points{gap:10px;margin:18px 0 22px;max-width:340px}
-      .hero-point{font-size:12px;gap:8px}
-      .hero-point i{width:20px;height:20px;font-size:9px}
-      .price-card{width:190px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:5px 8px}
-      .price-label{font-size:10px}
-      .old-price{font-size:14px}
-      .new-price{font-size:18px}
-      .discount{font-size:10px;padding:3px 7px;grid-column:2;grid-row:1}
-      .price-card .old-price{grid-column:1;grid-row:2}
-      .price-card .new-price{grid-column:2;grid-row:2}
-      .stock{width:190px;margin-top:12px}
-      .stock-label{font-size:11px;margin-bottom:5px}
-      .stock-bar{height:20px}
-      .stock-bar span{font-size:10px}
+
+      .price-label{
+        font-size:10px;
+      }
+
+      .old-price{
+        font-size:14px;
+      }
+
+      .new-price{
+        font-size:18px;
+      }
+
+      .discount{
+        font-size:10px;
+        padding:3px 7px;
+        grid-column:2;
+        grid-row:1;
+      }
+
+      .price-card .old-price{
+        grid-column:1;
+        grid-row:2;
+      }
+
+      .price-card .new-price{
+        grid-column:2;
+        grid-row:2;
+      }
+
+      .stock{
+        width:190px;
+        margin-top:12px;
+        position:relative;
+        z-index:4;
+      }
+
+      .stock-label{
+        font-size:11px;
+        margin-bottom:5px;
+      }
+
+      .stock-bar{
+        height:20px;
+      }
+
+      .stock-bar span{
+        font-size:10px;
+      }
+
       .hero-cta{
-        margin-top:18px;
+        margin-top:16px;
         position:relative;
-        z-index:3;
+        z-index:5;
+      }
+
+      .hero-cta .amazon-btn{
+        display:inline-flex;
+      }
+
+      .hero-cta .amazon-btn .amazon{
+        padding:12px 14px;
+        font-size:12px;
+      }
+
+      .hero-cta .amazon-btn .offer{
+        padding:12px 16px;
+        font-size:12px;
+        white-space:nowrap;
       }
       .amazon-btn .amazon{padding:12px 13px;font-size:12px}
       .amazon-btn .offer{padding:12px 13px;font-size:12px;white-space:nowrap}
@@ -488,15 +591,30 @@
       .legal{flex-direction:column}
     }
 
-    @media (max-width: 390px){
-      .hero{min-height:760px}
-      .hero-inner{
-        min-height:760px;
-        padding:28px 0 36px;
-        align-items:flex-start;
+    @media (max-width:390px){
+      .hero{
+        min-height:600px;
       }
-      .hero h1{font-size:32px}
-      .price-card,.stock{width:182px}
+
+      .hero-inner{
+        min-height:600px;
+      }
+
+      .hero h1{
+        font-size:32px;
+      }
+
+      .hero-art-mobile{
+        right:0;
+        top:235px;
+        width:205px;
+        height:250px;
+      }
+
+      .price-card,
+      .stock{
+        width:190px;
+      }
     }
   </style>
 </head>
