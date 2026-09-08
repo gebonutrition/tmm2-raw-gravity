@@ -139,7 +139,11 @@
     .hero-line-2::after{
       content:" ";
     }
-    .hero h1 .x{color:var(--orange)}
+    .hero h1 .x{
+      color:var(--orange);
+      display:inline-block;
+      margin:0 7px;
+    }
     .hero-points{display:grid;gap:10px;margin:24px 0 22px}
     .hero-point{display:flex;align-items:center;gap:10px;color:#1A1A1A;font-weight:800;font-size:18px}
     .hero-point i{
@@ -582,9 +586,17 @@
       .email-form{flex-direction:column}
       .email-form button{width:100%}
 
-      .footer{padding:36px 0 28px}
+      .footer{padding:36px 0 14px}
       .footer-grid{flex-direction:column}
-      .footer .amazon-btn{margin-top:20px}
+      .footer .amazon-btn{
+        margin-top:20px;
+        width:100%;
+      }
+
+      .footer .amazon-btn .offer{
+        flex:1;
+        text-align:center;
+      }
       .trust{margin-top:20px}
       .legal{flex-direction:column}
     }
