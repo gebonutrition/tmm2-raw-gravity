@@ -13,7 +13,9 @@ export default async function handler(req, res) {
     const cleanEmail = email.trim();
     const cleanLanding = String(landing || "tmm2").trim();
     const rawSource = String(source || "meta").trim().toLowerCase();
-    const cleanSource = ["tiktok", "meta", "klaviyo", "instagram"].includes(rawSource) ? rawSource : "meta";
+    const cleanSource = ["tiktok", "meta", "google", "youtube", "dv360"].includes(rawSource)
+	  ? rawSource
+	  : "unknown";
     const cleanCreative = String(creative || "unknown").trim();
 
     const apiKey = process.env.KLAVIYO_API_KEY || process.env.KLAVIYO_PRIVATE_API_KEY;
@@ -115,10 +117,12 @@ export default async function handler(req, res) {
 		"https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_9986EB1E2475865D64AA28A04713BA29_afap_abs&ref_=aa_maas&tag=maas"
 	};
 
-    return res.status(200).json({
-      success: true,
-      amazonUrl: amazonUrls[cleanSource] || amazonUrls.meta
-    });
+	return res.status(200).json({
+	  success: true,
+	  amazonUrl:
+		amazonUrls[cleanSource] ||
+		"https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_A901C78DB711B9CD58AF45E1149F65C6_afap_abs&ref_=aa_maas&tag=maas"
+	});
 
   } catch (error) {
     console.error("TMM2 Vercel API error:", error);

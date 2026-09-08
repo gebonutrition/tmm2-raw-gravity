@@ -971,6 +971,7 @@
     const submitButton = document.getElementById("email-submit");
     const successState = document.getElementById("success-state");
     const errorState = document.getElementById("error-state");
+    let googleAdsConversionSent = false;
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
