@@ -71,8 +71,16 @@
       min-height:760px;
       overflow:hidden;
       background:
-        radial-gradient(circle at 72% 40%,#FFDA8E 0%,#FDB94A 32%,#F7941D 65%,#E67A0F 100%);
-      border-bottom:4px solid #111
+        linear-gradient(
+          90deg,
+          #FDB94A 0%,
+          #FDB548 30%,
+          #F9A83A 52%,
+          #F7941D 72%,
+          #E98215 88%,
+          #E67A0F 100%
+        );
+      border-bottom:4px solid #111;
     }
     .hero-art{
       position:absolute;
@@ -92,8 +100,17 @@
       display:none;
     }
     .hero-shade{
-      position:absolute;inset:0;
-      background:linear-gradient(90deg,#FDB94A 0%,#FDB94A 28%,rgba(253,185,74,.76) 43%,transparent 64%)
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(253,185,74,.18) 0%,
+          rgba(253,185,74,.14) 28%,
+          rgba(253,185,74,.08) 48%,
+          rgba(253,185,74,.03) 68%,
+          rgba(253,185,74,0) 82%
+        );
     }
     .hero-inner{
       position:relative;
