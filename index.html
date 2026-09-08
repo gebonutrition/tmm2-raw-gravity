@@ -71,13 +71,11 @@
       min-height:760px;
       overflow:hidden;
       background:
-        linear-gradient(
-          90deg,
-          #FDB94A 0%,
-          #FDB548 30%,
-          #F9A83A 52%,
-          #F7941D 72%,
-          #E98215 88%,
+        radial-gradient(
+          circle at 72% 40%,
+          #FFDA8E 0%,
+          #FDB94A 32%,
+          #F7941D 65%,
           #E67A0F 100%
         );
       border-bottom:4px solid #111;
@@ -100,7 +98,16 @@
       display:none;
     }
     .hero-shade{
-      display:none;
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(
+          90deg,
+          #FDB94A 0%,
+          #FDB94A 32%,
+          rgba(253,185,74,.75) 45%,
+          transparent 62%
+        );
     }
     .hero-inner{
       position:relative;
