@@ -328,7 +328,7 @@
 
       /* MOBILE HERO */
       .hero{
-        min-height:600px;
+        min-height:500px;
         background:
           radial-gradient(
             circle at 80% 8%,
@@ -344,7 +344,7 @@
       }
 
       .hero-art-mobile{
-        display:block;
+        display:none;
         position:absolute;
         right:0;
         top:235px;
@@ -375,7 +375,7 @@
       .hero-inner{
         position:relative;
         z-index:2;
-        min-height:600px;
+        min-height:500px;
         padding:28px 0 40px;
         display:flex;
         align-items:flex-start;
@@ -404,9 +404,8 @@
 
       .hero-line-1,
       .hero-line-2,
-      .hero-line-3,
-      .hero-line-4{
-        display:block;
+      .hero-line-3{
+        display:inline;
       }
 
       .hero-line-1::after,
@@ -419,7 +418,7 @@
         display:flex;
         flex-direction:column;
         gap:10px;
-        margin:16px 0 18px;
+        margin:14px 0 18px;
         max-width:220px;
       }
 
@@ -593,11 +592,11 @@
 
     @media (max-width:390px){
       .hero{
-        min-height:600px;
+        min-height:500px;
       }
 
       .hero-inner{
-        min-height:600px;
+        min-height:500px;
       }
 
       .hero h1{
@@ -606,9 +605,9 @@
 
       .hero-art-mobile{
         right:0;
-        top:235px;
-        width:205px;
-        height:250px;
+        top:205px;
+        width:215px;
+        height:260px;
       }
 
       .price-card,
@@ -643,9 +642,8 @@
 
           <h1>
             <span class="hero-line-1">Take My Muffin</span>
-            <span class="hero-line-2"><span class="x">x</span> Raw Gravity</span>
-            <span class="hero-line-3">presents raw</span>
-            <span class="hero-line-4">coffee+</span>
+            <span class="hero-line-2"><span class="x">x</span> Raw Gravity</span><br>
+            <span class="hero-line-3">presents raw coffee+</span>
           </h1>
 
           <div class="hero-points">
