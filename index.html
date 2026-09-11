@@ -752,7 +752,7 @@
           </div>
 
           <div class="hero-cta">
-            <a class="amazon-btn" href="#email-capture">
+            <a class="amazon-btn" id="cta-hero-get-25-off" href="#fan-price-form-section">
               <span class="amazon">amazon</span>
               <span class="offer">Get -25% off</span>
             </a>
@@ -837,7 +837,7 @@
           <span class="new">$32.40</span>
         </div>
 
-        <a class="amazon-btn" href="#email-capture">
+        <a class="amazon-btn" id="cta-offer-get-25-off" href="#fan-price-form-section">
           <span class="amazon">amazon</span>
           <span class="offer">Get -25% off</span>
         </a>
@@ -908,7 +908,7 @@
       </div>
     </section>
 
-    <section class="email-section" id="email-capture">
+    <section class="email-section" id="fan-price-form-section">
       <div class="wrap email-box">
         <div class="email-icon">📬</div>
         <h2>Your fan price is waiting<br>get the raw coffee with -25% off</h2>
@@ -923,9 +923,22 @@
           <span>247 / 500</span>
         </div>
 
-        <form class="email-form" id="lead-form">
-          <input id="email-input" type="email" name="email" autocomplete="email" required placeholder="you@example.com" aria-label="Email">
-          <button id="email-submit" type="submit">Get the 25% code</button>
+        <form
+          class="email-form"
+          id="fan-price-email-form"
+          method="post"
+          action="/api/subscribe"
+        >
+          <input
+            id="fan-price-email"
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
+            placeholder="you@example.com"
+            aria-label="Email"
+          >
+          <button id="fan-price-email-submit" type="submit">Get the 25% code</button>
         </form>
 
         <div class="success" id="success-state">Code sent! Check your inbox 🎉</div>
@@ -943,7 +956,7 @@
             <a class="privacy" href="#">Privacy Policy</a>
           </div>
 
-          <a class="amazon-btn" href="#email-capture">
+          <a class="amazon-btn" id="cta-bottom-get-25-off" href="#fan-price-form-section">
             <span class="amazon">amazon</span>
             <span class="offer">Get -25% off</span>
           </a>
@@ -978,9 +991,9 @@
     };
 
     const DEFAULT_AMAZON_URL = "https://www.amazon.com/dp/B0GTWJ3K1R?maas=maas_adg_A901C78DB711B9CD58AF45E1149F65C6_afap_abs&ref_=aa_maas&tag=maas";
-    const form = document.getElementById("lead-form");
-    const emailInput = document.getElementById("email-input");
-    const submitButton = document.getElementById("email-submit");
+    const form = document.getElementById("fan-price-email-form");
+    const emailInput = document.getElementById("fan-price-email");
+    const submitButton = document.getElementById("fan-price-email-submit");
     const successState = document.getElementById("success-state");
     const errorState = document.getElementById("error-state");
     let googleAdsConversionSent = false;
@@ -1051,9 +1064,9 @@
       }
     });
 
-    document.querySelectorAll('a[href="#email-capture"]').forEach((link) => {
+    document.querySelectorAll('a[href="#fan-price-form-section"]').forEach((link) => {
       link.addEventListener("click", (event) => {
-        const target = document.getElementById("email-capture");
+        const target = document.getElementById("fan-price-form-section");
         if (target) {
           event.preventDefault();
           target.scrollIntoView({behavior:"smooth", block:"center"});
