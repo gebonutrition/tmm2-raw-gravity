@@ -181,7 +181,17 @@
     .stock-label{font-size:13px;font-weight:800;color:#1A1A1A;margin-bottom:6px}
     .stock-bar{position:relative;height:22px;background:#1A1A1A;border:3px solid #000;border-radius:20px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.5)}
     .stock-fill{height:100%;width:49.4%;background:linear-gradient(90deg,#FFE066,#FF5A1F);box-shadow:0 0 14px 2px rgba(255,90,31,.9);animation:barpulse 1.6s ease-in-out infinite}
-    .stock-bar span{position:absolute;inset:0;display:grid;place-items:center;font-size:11px;font-weight:900;text-shadow:0 1px 2px #000}
+    .stock-bar span{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:3px;
+      font-size:11px;
+      font-weight:900;
+      text-shadow:0 1px 2px #000;
+    }
     .mid-copy .stock-bar span{
       color:#fff;
       text-shadow:none;
@@ -534,7 +544,7 @@
         color:#888;
         font-style:normal;
       }
-      
+
       .hero-cta{
         margin-top:16px;
         position:relative;
@@ -658,9 +668,17 @@
     }
 
     @media (max-width:768px){
-      .mobile-break{
-        display:inline;
+      .price-card{
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
+        gap:14px;
       }
+
+      .price-card .discount{
+        margin-left:0;
+      }
+    }
     }
   </style>
 </head>
