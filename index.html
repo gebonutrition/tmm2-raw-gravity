@@ -488,9 +488,9 @@
       .price-card{
         width:190px;
         padding:12px 14px;
-        display:grid;
-        grid-template-columns:1fr auto;
-        gap:5px 8px;
+        display:flex;
+        align-items:center;
+        gap:14px;
         position:relative;
         z-index:4;
       }
@@ -502,8 +502,7 @@
       .discount{
         font-size:10px;
         padding:3px 7px;
-        grid-column:2;
-        grid-row:1;
+        margin-left:0;
       }
 
       .stock{
@@ -525,7 +524,17 @@
       .stock-bar span{
         font-size:10px;
       }
+      
+      .stock-bar span b{
+        color:#fff;
+        font-style:normal;
+      }
 
+      .stock-bar span em{
+        color:#888;
+        font-style:normal;
+      }
+      
       .hero-cta{
         margin-top:16px;
         position:relative;
@@ -783,7 +792,7 @@
       <div class="wrap mid-inner">
         <div class="mid-copy">
           <strong>Your fan price is still available.</strong>
-          <p>-25% off for the first 500 orders only</p>
+          <p><b>-25% off for the first 500 orders only</b></p>
           <div class="stock-bar" style="max-width:320px">
             <div class="stock-fill"></div>
             <span>247 / 500</span>
@@ -886,7 +895,7 @@
             placeholder="you@example.com"
             aria-label="Email"
           >
-          <button id="fan-price-email-submit" type="submit">Get the 25% code</button>
+          <button id="fan-price-email-submit" type="submit">Get my code</button>
         </form>
 
         <div class="success" id="success-state">Code sent! Check your inbox 🎉</div>
@@ -899,7 +908,7 @@
       <div class="wrap">
         <div class="footer-grid">
           <div>
-            <div class="footer-title">TAKE MY MUFFIN x Raw Gravity</div>
+            <div class="footer-title">TMM x Raw Gravity</div>
             <div class="footer-meta">Austin, TX</div>
             <a class="privacy" href="#">Privacy Policy</a>
           </div>
