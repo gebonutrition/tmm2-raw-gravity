@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lilita+One&family=Manrope:wght@400;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -1740,6 +1740,205 @@
         width: 100%;
         min-width: 0;
         flex: initial;
+      }
+    }
+    /* FINAL FIX — DESKTOP HERO */
+    @media (min-width: 769px) {
+      .tmm-v2-hero {
+        height: min(860px, calc(100svh - 36px));
+        min-height: 0;
+      }
+
+      .tmm-v2-hero__inner {
+        height: 100%;
+        min-height: 0;
+        width: min(1200px, calc(100% - 48px));
+        padding: 32px 30px 32px 70px;
+        box-sizing: border-box;
+        grid-template-columns: minmax(0, 600px) minmax(0, 1fr);
+        gap: 32px;
+        align-items: center;
+      }
+
+      .tmm-v2-hero__copy {
+        width: 100%;
+        max-width: 600px;
+        transform: none;
+      }
+
+      .tmm-v2-hero__title {
+        max-width: 600px;
+        font-family: 'Lilita One', Arial, sans-serif;
+        font-size: clamp(50px, 4.1vw, 64px);
+        line-height: 1.02;
+        letter-spacing: .8px;
+      }
+
+      .tmm-v2-hero__sticker {
+        font-family: 'Permanent Marker', cursive;
+      }
+
+      .tmm-v2-hero__art {
+        top: 50%;
+        right: min(11vw, 230px);
+        width: min(65vw, 1300px);
+        aspect-ratio: 1397 / 1126;
+        transform: translateY(-50%);
+        background-size: cover;
+        background-position: center;
+      }
+    }
+    /* FINAL FIX — MOBILE HERO */
+    @media (max-width: 768px) {
+      .tmm-v2-hero {
+        height: auto;
+        min-height: 0;
+      }
+
+      .tmm-v2-hero__inner {
+        display: flex;
+        align-items: stretch;
+        width: 100%;
+        height: calc(100svh - 132px);
+        min-height: 460px;
+        padding: 10px 20px 14px;
+        box-sizing: border-box;
+      }
+
+      .tmm-v2-hero__inner > div[aria-hidden="true"] {
+        display: none;
+      }
+
+      .tmm-v2-hero__copy {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        height: 100%;
+        transform: none;
+      }
+
+      .tmm-v2-hero__title {
+        max-width: 380px;
+        font-family: 'Lilita One', Arial, sans-serif;
+        font-size: clamp(26px, 4.8dvh, 36px);
+        line-height: 1.08;
+        letter-spacing: .6px;
+        -webkit-text-stroke: 5px #1A1A1A;
+      }
+
+      .tmm-v2-hero__presents {
+        font-family: 'Manrope', Arial, sans-serif;
+      }
+
+      .tmm-v2-hero__sticker {
+        margin-top: 10px;
+        margin-left: 12px;
+        font-family: 'Permanent Marker', cursive;
+        font-size: clamp(17px, 2.9dvh, 22px);
+      }
+
+      .tmm-v2-hero__art {
+        left: 0;
+        right: -20px;
+        top: 165px;
+        bottom: 150px;
+        width: auto;
+        height: auto;
+        aspect-ratio: auto;
+        transform: none;
+        background-position: right top;
+        background-size: cover;
+        -webkit-mask-image: linear-gradient(
+          180deg,
+          transparent 0%,
+          #000 14%,
+          #000 86%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          180deg,
+          transparent 0%,
+          #000 14%,
+          #000 86%,
+          transparent 100%
+        );
+      }
+
+      .tmm-v2-hero__offer {
+        margin-top: auto;
+        padding-top: clamp(8px, 1.4dvh, 14px);
+        gap: 8px;
+        position: relative;
+        z-index: 3;
+      }
+
+      .tmm-v2-hero__stock-label {
+        font-size: 11px;
+      }
+
+      .tmm-v2-hero__trust {
+        position: relative;
+        z-index: 3;
+        margin-top: 10px;
+        gap: 8px;
+      }
+
+      .tmm-v2-hero__trust-item {
+        font-size: 10px;
+      }
+    }
+    /* MARQUEE — BLACK BACKGROUND */
+    header.marquee {
+      background: #1A1A1A !important;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    header.marquee .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 20s linear infinite;
+      will-change: transform;
+    }
+
+    header.marquee .marquee-group {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+    }
+
+    /* FINAL FIX — MOBILE MID CTA */
+    @media (max-width: 768px) {
+      .tmm-v2-mid-cta {
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 28px 0 !important;
+      }
+
+      .tmm-v2-mid-inner {
+        height: auto !important;
+        min-height: 0 !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start !important;
+        align-items: stretch;
+        align-content: flex-start;
+        gap: 18px;
+      }
+
+      .tmm-v2-mid-copy {
+        flex: 0 0 auto !important;
+        min-height: 0;
+      }
+
+      .tmm-v2-mid-cta .tmm-v2-buy-btn--inline {
+        flex: 0 0 auto !important;
+        align-self: stretch;
+        width: 100%;
+        min-width: 0;
+        margin: 0;
       }
     }
   </style>
