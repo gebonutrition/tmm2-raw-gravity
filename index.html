@@ -1665,6 +1665,83 @@
         min-height: 48px;
       }
     }
+    /* TMM V2 — DESKTOP HERO ALIGNMENT FIX */
+    @media (min-width: 769px) {
+      .tmm-v2-hero__inner {
+        width: min(1200px, calc(100% - 48px));
+        max-width: 1200px;
+        min-height: calc(100vh - 36px);
+        padding: 48px 30px 48px 70px;
+        box-sizing: border-box;
+        grid-template-columns: minmax(520px, 540px) minmax(0, 1fr);
+        gap: 32px;
+      }
+
+      .tmm-v2-hero__copy {
+        width: 100%;
+        max-width: 540px;
+        transform: translateY(0);
+      }
+
+      .tmm-v2-hero__title {
+        max-width: 560px;
+        font-size: clamp(56px, 4vw, 64px);
+        line-height: 1.02;
+      }
+
+      .tmm-v2-hero__offer {
+        width: 100%;
+        max-width: 460px;
+        margin-top: 36px;
+      }
+
+      .tmm-v2-hero__trust {
+        width: 100%;
+        max-width: 460px;
+      }
+
+      .tmm-v2-hero__art {
+        right: 80px;
+        width: min(70vw, 1260px);
+        max-width: none;
+      }
+    }
+    /* TMM V2 — STICKY BAR WIDTH FIX */
+    .tmm-v2-sticky__inner {
+      width: min(1200px, calc(100% - 48px));
+      max-width: none;
+      margin: 0 auto;
+      padding: 12px 0;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .tmm-v2-sticky .tmm-v2-buy-btn--inline {
+      width: 294px;
+      min-width: 294px;
+      flex: 0 0 294px;
+    }
+
+    /* Keep the existing compact mobile layout */
+    @media (max-width: 768px) {
+      .tmm-v2-sticky__inner {
+        width: 100%;
+        max-width: none;
+        padding: 9px 12px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 140px;
+        gap: 10px;
+      }
+
+      .tmm-v2-sticky .tmm-v2-buy-btn--inline {
+        width: 100%;
+        min-width: 0;
+        flex: initial;
+      }
+    }
   </style>
 </head>
 
